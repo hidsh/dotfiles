@@ -92,13 +92,13 @@ local = '/etc/profile.d'
 use = ['wezterm.sh']
 apply = ['source']
 
-[plugins.dotfiles-defer]
-local = '~/dotfiles/d/zsh/sheldon'
-use = ['defer.zsh']
-apply = ['defer']
-
 [plugins.dotfiles-sync]
 local = '~/dotfiles/d/zsh/sheldon'
 use = ['sync.zsh']
 apply = ['source']
+
+[plugins.dotfiles-defer]
+local = '~/dotfiles/d/zsh/sheldon'
+use = ['defer.zsh']
+apply = ['defer']
 
