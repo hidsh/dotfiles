@@ -1,0 +1,17 @@
+# https://www.elliotdenolf.com/blog/bootstrap-your-dotfiles-with-dotbot
+
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc: d/bash/bashrc
+      #    ~/.zshrc: d/zsh/zshrc
+      #    ~/.config/nvim/init.lua: d/nvim/init.lua
+      #    ~/.vimrc: d/vim/vimrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
