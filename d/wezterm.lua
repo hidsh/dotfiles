@@ -34,6 +34,9 @@ config.keys = {
 	{ mods = 'META', key = 'v', action = act.PasteFrom 'Clipboard' },				-- paste
 	{ mods = 'META', key = 'h', action = act.SendKey { mods = 'SHIFT|CTRL', key = 'w'} },		-- zsh:backward-kill-word
 	{ mods = 'META', key = 'f', action = act.SendKey { mods = 'META', key = 'f'} },			-- zsh:emacs-forward-word 
+	{ mods = 'CTRL', key = 'j', action = wezterm.action.Nop },		-- for cursor moving
+	{ mods = 'CTRL', key = 'l', action = wezterm.action.Nop },		-- for cursor moving
+	{ mods = 'CTRL', key = 'v', action = wezterm.action.Nop },		-- for paste
 --	{ mods = '', key = '', action = act. '' },				-- 
 
 
