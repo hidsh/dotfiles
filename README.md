@@ -23,16 +23,21 @@ This branch is for:
 `dotfiles/d` has main contents like that.
 
 ```
-~/dotfiles 󰜴 \tree -a -I .git -I dotbot d                                                     master
-d
-├── nvim
-│   └── init.lua
-└── zsh
-    ├── sheldon
+~/dotfiles $ \tree -Fa -I .git -I dotbot d
+d/
+├── bash/
+│   └── bashrc
+├── nvim/
+│   ├── init.lua
+│   └── my-add.lua
+├── vim/
+│   └── vimrc
+├── wezterm.lua
+└── zsh/
+    ├── sheldon/
     │   ├── defer.zsh
     │   ├── plugins.toml
     │   └── sync.zsh
-    ├── wezterm.sh
     └── zshrc
 ```
 

@@ -1,19 +1,36 @@
-# https://www.elliotdenolf.com/blog/bootstrap-your-dotfiles-with-dotbot
+# dotbot configuration for my dotfiles
+#
+# todo:
+# - apt install fzf ripgrep eza fd
+# - apt install zsh
+# - wezterm
+# - sheldon
+# - neovim kickstart -> git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 
 - defaults:
     link:
       relink: true
+      create: true
 
 - clean: ['~']
 
 - link:
-    # link          :   entity file
+    # target link :     entity file
     ~/.wezterm.lua:     d/wezterm.lua
+    ~/.vimrc:           d/vim/vimrc
     ~/.bashrc:          d/bash/bashrc
     ~/.zshrc:           d/zsh/zshrc
-    ~/.vimrc:           d/vim/vimrc
-    ~/.config/nvim/init.lua: d/nvim/init.lua
+    ~/.config/sheldon/plugins.toml:   d/zsh/sheldon/plugins.toml
+    ~/.config/sheldon/defer.zsh:      d/zsh/sheldon/defer.zsh
+    ~/.config/sheldon/sync.zsh:       d/zsh/sheldon/sync.zsh
+    ~/.config/nvim/init.lua:                        d/nvim/init.lua
+    ~/.config/nvim/lua/custom/plugins/my-add.lua:   d/nvim/my-add.lua
+
+- create:
+    ~/.ssh:
+      mode: 0700
 
 - shell:
+    #- chsh -s $(which zsh)
     - [git submodule update --init --recursive, Installing submodules]
 

@@ -1,8 +1,8 @@
 #
-# zsh/defer.sh
+# zsh/sheldon/defer.sh
 #
 
-# distingish OS/CPU
+# distingish on which OS/CPU running
 
 case $(uname -s) in
 Darwin)
@@ -246,15 +246,15 @@ zzzip () {
 }
 alias zip=zzzip
 
-no-cmd() {
-	echo "This command is unbound by 'no-cmd' in ~/.zshrc"
+nop() {
+	echo "This command is unbound by 'nop()' in ~/.zshrc"
 }
+
+alias pico=nop
+alias nano=nop
 
 find- () {find $* 2>/dev/null}
 rg- () {rg $* 2>/dev/null}
-
-alias pico=no-cmd
-alias nano=no-cmd
 
 ####################################################
 # keybindings

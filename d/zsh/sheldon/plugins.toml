@@ -87,11 +87,10 @@ hooks.post = """ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 #			bindkey '^J' history-substring-search-down
 #			HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1"""
 
-
 [plugins.wezterm]
-local = '~/dotfiles/d/zsh'
+local = '/etc/profile.d'
 use = ['wezterm.sh']
-apply = ['defer']
+apply = ['source']
 
 [plugins.dotfiles-defer]
 local = '~/dotfiles/d/zsh/sheldon'
@@ -102,13 +101,4 @@ apply = ['defer']
 local = '~/dotfiles/d/zsh/sheldon'
 use = ['sync.zsh']
 apply = ['source']
-
-# ----
-# [plugins]
-
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
-
 
