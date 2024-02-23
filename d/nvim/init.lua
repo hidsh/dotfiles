@@ -599,6 +599,11 @@ local servers = {
       telemetry = { enable = false },
       -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
       -- diagnostics = { disable = { 'missing-fields' } },
+
+      -- https://github.com/nvim-lua/kickstart.nvim/issues/228#issuecomment-1484202073
+      diagnostics = {
+        globals = {'vim'},
+      },
     },
   },
 }
