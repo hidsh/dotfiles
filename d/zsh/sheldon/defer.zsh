@@ -15,24 +15,9 @@ ubuntu-version() {
 # file path in title bar
 precmd() {eval 'echo -ne "\033]0;${PWD/#$HOME/~}\007"'}
 
-# my zip compress command
-# zip DIR-NAME
-zzzip () {
-    dir=$1
-    d=`echo $dir | sed -e 's/\/$//'`
-    \zip -r $d.zip $d
-    if [ "$?" -eq 0 ]; then
-        echo
-        echo -n "  Zipped to: "
-        ls -d $PWD/{*,.*} | grep $d.zip
-    fi
-}
-alias zip=zzzip
-
 nop() {
 	echo "This command is unbound by 'nop()' in ~/.zshrc"
 }
-
 alias pico=nop
 alias nano=nop
 
@@ -49,8 +34,6 @@ bindkey -r "^[t"        # alt-t: transpose-words
 bindkey -r "^[h"		# alt-h: run-help
 
 ####################################################
-# various commands, apps, sdk, programs
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -64,7 +47,7 @@ export FZF_DEFAULT_OPTS=$FZF_THEME_DRACURA_MOD'--height 40% --reverse --header-l
 export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "bat --theme zenburn --color=always --style=grid --line-range :100 {}"'
 export FZF_CTRL_R_OPTS='--with-nth=2..'
 #export FZF_ALT_C_OPTS="--preview 'tree -CFA {} | head -200'"
-export FZF_ALT_C_OPTS="--bind ctrl-p:preview-up,ctrl-n:preview-down --preview 'exa -T {} | head -100'"
+export FZF_ALT_C_OPTS="--bind ctrl-p:preview-up,ctrl-n:preview-down --preview 'eza -T {} | head -100'"
 
 if type rg &> /dev/null; then
 	export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -86,42 +69,6 @@ rga-fzf() {
 	xdg-open "$file"
 }
 
-# fzf-git-hash
-function fzf-git-hash() {
-        git gr | fzf | sed -e "s/^[\*\|][ |\\\/\*]*//g" | awk '{ print $1 }'
-}
-#alias -g C='$(fzf-git-hash)'
-
-# command history
-# function select-history() {
-#   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="Hist > ")
-#   CURSOR=$#BUFFER
-# }
-# zle -N select-history
-# bindkey '^r' select-history
-
-# cdr with fzf
-#autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-#add-zsh-hook chpwd chpwd_recent_dirs
-
-#zstyle ':completion:*' recent-dirs-insert both
-#zstyle ':chpwd:*' recent-dirs-max 500
-#zstyle ':chpwd:*' recent-dirs-default true
-#zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
-#zstyle ':chpwd:*' recent-dirs-pushd true
-
-#function fzf-cdr() {
-#    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf --prompt="cd:")
-#    if [ -n "$selected_dir" ]; then
-#        BUFFER="cd ${selected_dir}"
-#        zle accept-line
-#    fi
-#   zle clear-screen
-#}
-#zle -N fzf-cdr
-#bindkey '^v' fzf-cdr
-
-
 # docker completion
 # if [ -e ~/.zsh/completions ]; then
 #   fpath=(~/.zsh/completions $fpath)
@@ -130,6 +77,17 @@ function fzf-git-hash() {
 # alias dps='docker ps --format "{{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Command}}\t{{.RunningFor}}"'
 # alias dc='docker exec -it `dps | fzf | cut -f 1` /bin/bash'
 
+
+# fzf my keybindings
+#   tab:		accept
+#   ctrl-space:	toggle+down
+#   ctrl-p:	preview-up
+#   ctrl-n:	preview-down
+FZF_MY_MOVE_KEYS=' --bind=tab:accept,ctrl-space:toggle+down,ctrl-p:preview-up,ctrl-n:preview-down'
+FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS$FZF_MY_MOVE_KEYS
+
+####################################################
+# various commands, apps, sdk and/or programs
 
 # meld
 # alias meld='/Applications/Meld.app/Contents/MacOS/Meld'		# Mac
