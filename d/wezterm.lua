@@ -1,4 +1,6 @@
- -- Pull in the wezterm API
+-- wezterm configuration
+
+-- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
 -- This will hold the configuration.
@@ -21,26 +23,34 @@ config.font_size = 13
 -- key bindings
 local act = wezterm.action
 config.keys = {
-	{ mods = 'ALT', key = 'n', action = act.SpawnWindow },						-- new window
-	{ mods = 'META', key = 't', action = act.SpawnTab 'CurrentPaneDomain' },			-- new tab
-	{ mods = 'META', key = 'w', action = act.CloseCurrentTab {confirm = false} },			-- close tab
-	{ mods = 'META', key = 'u', action = act.ActivateTabRelative(-1) },				-- next tab
-	{ mods = 'META', key = 'i', action = act.ActivateTabRelative(1) },				-- previous tab 
-	{ mods = 'CTRL', key = '2', action = act.SplitVertical {domain = 'CurrentPaneDomain'} }, 	-- split pane
-	{ mods = 'CTRL', key = '3', action = act.SplitHorizontal {domain = 'CurrentPaneDomain'} }, 	-- split pane
-	{ mods = 'SHIFT|CTRL', key = 'j', action = act.ScrollByLine(1), },				-- scroll down
-	{ mods = 'SHIFT|CTRL', key = 'k', action = act.ScrollByLine(-1) },				-- scroll up
-	{ mods = 'META', key = 'c', action = act.CopyTo 'Clipboard' },					-- copy
-	{ mods = 'META', key = 'v', action = act.PasteFrom 'Clipboard' },				-- paste
-	{ mods = 'META', key = 'h', action = act.SendKey { mods = 'SHIFT|CTRL', key = 'w'} },		-- zsh:backward-kill-word
-	{ mods = 'META', key = 'f', action = act.SendKey { mods = 'META', key = 'f'} },			-- zsh:emacs-forward-word 
-	{ mods = 'CTRL', key = 'j', action = wezterm.action.Nop },		-- for cursor moving
-	{ mods = 'CTRL', key = 'l', action = wezterm.action.Nop },		-- for cursor moving
-	{ mods = 'CTRL', key = 'v', action = wezterm.action.Nop },		-- for paste
---	{ mods = '', key = '', action = act. '' },				-- 
-
-
+  { mods = 'ALT', key = 'n', action = act.SpawnWindow },                                        -- new window
+  { mods = 'META', key = 't', action = act.SpawnTab 'CurrentPaneDomain' },                      -- new tab
+  { mods = 'META', key = 'w', action = act.CloseCurrentTab {confirm = false} },                 -- close tab
+  { mods = 'META', key = 'u', action = act.ActivateTabRelative(-1) },                           -- next tab
+  { mods = 'META', key = 'i', action = act.ActivateTabRelative(1) },                            -- previous tab
+  { mods = 'CTRL', key = '2', action = act.SplitVertical {domain = 'CurrentPaneDomain'} },      -- split pane
+  { mods = 'CTRL', key = '3', action = act.SplitHorizontal {domain = 'CurrentPaneDomain'} },    -- split pane
+  { mods = 'SHIFT|CTRL', key = 'j', action = act.ScrollByLine(1), },                            -- scroll down
+  { mods = 'SHIFT|CTRL', key = 'k', action = act.ScrollByLine(-1) },                            -- scroll up
+  { mods = 'META', key = 'c', action = act.CopyTo 'Clipboard' },                                -- copy
+  { mods = 'META', key = 'v', action = act.PasteFrom 'Clipboard' },                             -- paste
+  { mods = 'META', key = 'h', action = act.SendKey { mods = 'SHIFT|CTRL', key = 'w'} },         -- zsh:backward-kill-word
+  { mods = 'META', key = 'f', action = act.SendKey { mods = 'META', key = 'f'} },               -- zsh:emacs-forward-word
+  { mods = 'CTRL', key = 'j', action = wezterm.action.Nop },                                    -- for cursor moving
+  { mods = 'CTRL', key = 'l', action = wezterm.action.Nop },                                    -- for cursor moving
+  { mods = 'CTRL', key = 'v', action = wezterm.action.Nop },                                    -- for paste
+  --    { mods = '', key = '', action = act. '' },                              -- 
 }
+
+config.mouse_bindings = {
+  -- shift-click will open the link under the mouse cursor
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'SHIFT',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+}
+
 
 -- and finally, return the configuration to wezterm
 return config
