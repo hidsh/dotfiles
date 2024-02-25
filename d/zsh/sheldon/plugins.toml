@@ -72,6 +72,11 @@ apply = ["defer"]
 github = "rupa/z"
 apply = ["defer"]
 
+[plugins.zsh-fzf-tab]
+github = 'Aloxaf/fzf-tab'
+apply = ["defer"]
+
+#-----------------
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
