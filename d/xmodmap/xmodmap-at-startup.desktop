@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/sh -c "sleep 7 && xmodmap /home/g/.Xmodmap"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[ja]=xmodmap-at-startup
+Name=xmodmap-at-startup
+Comment[ja]=Caps_Lock←全角/半角, swap ALT←→Super
+Comment=Caps_Lock←全角/半角, swap ALT←→Super

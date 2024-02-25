@@ -1,0 +1,21 @@
+xmodmap accepts the following input expressions:
+
+    pointer = default              reset pointer buttons to default
+    pointer = NUMBER ...           set pointer button codes
+    keycode NUMBER = [KEYSYM ...]  map keycode to given keysyms
+    keysym KEYSYM = [KEYSYM ...]   look up keysym and do a keycode operation
+    clear MODIFIER                 remove all keys for this modifier
+    add MODIFIER = KEYSYM ...      add the keysyms to the modifier
+    remove MODIFIER = KEYSYM ...   remove the keysyms from the modifier
+
+where NUMBER is a decimal, octal, or hex constant; KEYSYM is a valid
+Key Symbol name; and MODIFIER is one of the eight modifier names:  Shift,
+Lock, Control, Mod1, Mod2, Mod3, Mod4, or Mod5.  Lines beginning with
+an exclamation mark (!) are taken as comments.  Case is significant except
+for MODIFIER names.
+
+Keysyms on the left hand side of the = sign are looked up before any changes
+are made; keysyms on the right are looked up after all of those on the left
+have been resolved.  This makes it possible to swap modifier keys.
+
+

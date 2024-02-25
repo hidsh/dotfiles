@@ -1,0 +1,23 @@
+! my keyboard for Pop!_OS 22.04 on Macbook Pro 13 (Late 2013)
+!
+! $ xmodmap ~/.Xmodmap
+ 
+! swap Cmd_L(Super_L) <--> Opt_L(Alt_L)
+!remove mod1 = Alt_L
+!remove mod4 = Super_L
+!keycode 0x85 = Alt_L
+!keycode 0x40 = Super_L
+!add mod1 = Alt_L
+!add mod4 = Super_L
+
+! Cmd_R(Super_R) <-- Ctrl_R
+remove control = Control_R
+remove mod4 = Super_R
+keycode 134 = Control_R
+add control = Control_R
+add mod4 = Super_R
+
+! Caps_Lock <-- Zenkaku_Hankaku
+clear lock
+keysym Caps_Lock = Zenkaku_Hankaku
+
