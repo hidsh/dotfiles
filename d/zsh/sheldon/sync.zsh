@@ -182,7 +182,7 @@ alias ll="ls -lGh"
 alias n=nvim
 alias file='file -h'					# not follow symlink
 alias dd='dd status=progress'
-
+alias xcd='cd "$(xplr --print-pwd-as-result)"'
 
 # tree
 if [ -f $(which eza) ]; then
