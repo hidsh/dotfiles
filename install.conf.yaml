@@ -6,8 +6,9 @@
 # - apt install fcitx5-mozc
 # - wezterm
 # - sheldon
-# - neovim kickstart -> git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 # - cargo install xplr
+# - lazyvim
+# - goneovim (neoVIM GUI)
 
 - defaults:
     link:
@@ -21,10 +22,13 @@
     ~/.wezterm.lua:     d/wezterm.lua
     ~/.vimrc:           d/vim/vimrc
     ~/.bashrc:          d/bash/bashrc
-    ~/.zshrc:           d/zsh/zshrc
+    ~/.zshenv:                        d/zsh/zshenv
+    ~/.config/zsh/.zshrc:             d/zsh/zshrc
     ~/.config/sheldon/plugins.toml:   d/zsh/sheldon/plugins.toml
     ~/.config/sheldon/defer.zsh:      d/zsh/sheldon/defer.zsh
     ~/.config/sheldon/sync.zsh:       d/zsh/sheldon/sync.zsh
+    ~/.local/bin/xplr-hack.lua:       d/zsh/xplr-hack.lua
+    ~/.local/bin/imv-open.sh:         d/zsh/imv-open.sh
     ~/.config/nvim/init.lua:                        d/nvim/init.lua
     ~/.config/nvim/lua/custom/plugins/my-add.lua:   d/nvim/my-add.lua
     ~/.Xmodmap:                           d/xmodmap/dot.xmodmap
