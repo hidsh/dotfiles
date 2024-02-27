@@ -106,7 +106,8 @@ hooks.post = """ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 #			HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1"""
 
 [plugins.wezterm]
-local = '/etc/profile.d'
+#local = '/etc/profile.d'
+local = '~/dotfiles/d/zsh'
 use = ['wezterm.sh']
 apply = ['source']
 
