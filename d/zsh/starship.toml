@@ -1,0 +1,46 @@
+format = """
+$directory\
+$python\
+$character"""
+
+right_format = """$git_branch$git_status"""
+
+[directory]
+truncation_length = 1000
+truncate_to_repo = false
+style = "blue"
+read_only = ""
+
+[character]
+success_symbol = "[󰜴](bright-green)"
+error_symbol = "[󰜴](red)"
+vimcmd_symbol = "[ ](green)"
+
+[git_branch]
+symbol = ' '
+format = "[$symbol$branch]($style)"
+style = "cyan"
+
+[git_status]
+format = "[[($conflicted$modified)](218) ($stashed)]($style)"
+style = "cyan"
+up_to_date = "[](bold green)"
+conflicted = "[](bold red)"
+untracked = ""
+modified = "[](bold yellow)"
+staged = ""
+renamed = ""
+deleted = ""
+stashed = "[≡](bold)"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "white"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "inverted bold blue"
+
+[package]
+disable = true
+
