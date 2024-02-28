@@ -187,7 +187,7 @@ alias xcd='cd "$(xplr --print-pwd-as-result)"'
 
 # tree
 if [ -f $(which eza) ]; then
-    alias tree='eza -Ta --icons'
+    alias tree='eza -Ta'
 else
     alias tree='tree -I "*.pyc|__pycache__|*~" --charset=C -A $PWD'
 fi
