@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+neofetch
+
+echo -n '## single'
+time cat </dev/urandom | head -c 1G | gzip >/dev/null
+
+echo
+echo -n '## multi'
+time cat </dev/urandom | head -c 1G | pigz >/dev/null
