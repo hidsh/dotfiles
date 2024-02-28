@@ -122,6 +122,7 @@ export LC_ALL=$ENCODING
 export PATH=$HOME/bin:$PATH
 export PATH=~/.cargo/bin:$PATH			# rust tools
 export PATH=~/.fzf/bin:$PATH			# fzf
+export PATH="$PATH:/opt/nvim-linux64/bin"	# nvim
 
 # editor
 export EDITOR='nvim'
