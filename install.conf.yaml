@@ -30,10 +30,17 @@
     ~/.config/sheldon/sync.zsh:       d/zsh/sheldon/sync.zsh
     ~/.local/bin/xplr-hack.lua:       d/zsh/xplr-hack.lua
     ~/.local/bin/imv-open.sh:         d/zsh/imv-open.sh
-    ~/.config/nvim/init.lua:                        d/nvim/init.lua
-    ~/.config/nvim/lua/custom/plugins/my-add.lua:   d/nvim/my-add.lua
     ~/.Xmodmap:                           d/xmodmap/dot.xmodmap
     ~/.config/autostart/xmodmap.desktop:  d/xmodmap/xmodmap-at-startup.desktop
+
+    # nvim (kickstart)
+    #~/.config/nvim/init.lua:                        d/nvim/kickstart/init.lua
+    #~/.config/nvim/lua/custom/plugins/my-add.lua:   d/nvim/kickstart/my-add.lua
+
+    # nvim (lazyvim)
+    ~/.config/nvim:
+      glob: true
+      path: d/nvim/lazyvim/*
 
 - sudo:
   - clean: ['~']
