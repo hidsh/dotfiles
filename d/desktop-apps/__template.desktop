@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=<NAME OF THE APPLICATION>
+Comment=<A SHORT DESCRIPTION>
+Exec=<COMMAND-OR-FULL-PATH-TO-LAUNCH-THE-APPLICATION>
+Type=Application
+Terminal=false
+Icon=<ICON NAME OR PATH TO ICON>
+NoDisplay=false

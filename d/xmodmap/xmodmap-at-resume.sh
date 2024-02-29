@@ -14,15 +14,16 @@ TIMEST=$(date +'%F %T')
 LOGFILE='/tmp/xmodmap-at-resume.log'
 
 # entry point
-echo $TIMEST "Running xmodmap-at-resume.sh with argument: $1" >> $LOGFILE
+touch "$LOGFILE"
+echo $TIMEST "Running xmodmap-at-resume.sh with argument: $1" >> "$LOGFILE"
 
 if [ "${1}" == "pre" ]; then
-    # echo $TIMEST "pre" >> $LOGFILE
+    # echo $TIMEST "pre" >> "$LOGFILE"
     # Nothing to do for pre-sleep
 elif [ "${1}" == "post" ]; then
-    # echo $TIMEST "post" >> $LOGFILE
+    # echo $TIMEST "post" >> "$LOGFILE"
     export DISPLAY=:0  # Set the DISPLAY variable
     export XAUTHORITY=$XAUTH
-    echo $TIMEST' ' >> $LOGFILE
-    /usr/bin/sh -c "sleep 7 && xmodmap /home/$U/.Xmodmap" >> $LOGIFLE 2>&1
+    echo $TIMEST' ' >> "$LOGFILE"
+    /usr/bin/sh -c "sleep 7 && xmodmap /home/$U/.Xmodmap" >> "$LOGFILE" 2>&1
 fi
