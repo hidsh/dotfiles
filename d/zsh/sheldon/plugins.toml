@@ -69,8 +69,9 @@ apply = ["defer"]
 [plugins.zsh-fzf]
 github = 'zimfw/fzf'
 apply = ["defer"]
-hooks.pre =	 """zsh-defer source /usr/share/doc/fzf/examples/key-bindings.zsh
-                zsh-defer source /usr/share/doc/fzf/examples/completion.zsh"""
+# for keybindings such as Ctrl-t, Ctrl-r
+hooks.pre =	 """zsh-defer source ~/.fzf/shell/key-bindings.zsh
+                zsh-defer source ~/.fzf/shell/completion.zsh"""
 
 #[plugins.zsh-fzf-tab]
 #github = 'Aloxaf/fzf-tab'
