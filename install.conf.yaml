@@ -28,6 +28,7 @@
     ~/.config/sheldon/plugins.toml:   d/zsh/sheldon/plugins.toml
     ~/.config/sheldon/defer.zsh:      d/zsh/sheldon/defer.zsh
     ~/.config/sheldon/sync.zsh:       d/zsh/sheldon/sync.zsh
+    ~/.fdignore:                      d/zsh/dot.fdignore
     ~/.local/bin/xplr-hack.lua:       d/zsh/xplr-hack.lua
     ~/.local/bin/imv-open.sh:         d/zsh/imv-open.sh
     ~/.local/bin/preview.sh:          d/zsh/skim/preview.sh
