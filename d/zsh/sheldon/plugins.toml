@@ -62,9 +62,9 @@ hooks.post = """zstyle ':completion:*:(processes|jobs)' menu yes select=2
 github = "oknowton/zsh-dwim"
 apply = ["defer"]
 
-[plugins.zsh-z]
-github = "rupa/z"
-apply = ["defer"]
+#[plugins.zsh-z]
+#github = "rupa/z"
+#apply = ["defer"]
 
 [plugins.zsh-fzf]
 github = 'zimfw/fzf'
@@ -116,6 +116,7 @@ apply = ['source']
 local = '~/dotfiles/d/zsh/sheldon'
 use = ['zoxide-init.zsh']
 apply = ['defer']
+hooks.post = 'eval "$(zoxide init --cmd cd zsh)"'
 
 [plugins.dotfiles-sync]
 local = '~/dotfiles/d/zsh/sheldon'
