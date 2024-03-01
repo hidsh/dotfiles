@@ -112,6 +112,11 @@ local = '~/dotfiles/d/zsh'
 use = ['wezterm.sh']
 apply = ['source']
 
+[plugins.zoxide-init]
+local = '~/dotfiles/d/zsh/sheldon'
+use = ['zoxide-init.zsh']
+apply = ['defer']
+
 [plugins.dotfiles-sync]
 local = '~/dotfiles/d/zsh/sheldon'
 use = ['sync.zsh']
