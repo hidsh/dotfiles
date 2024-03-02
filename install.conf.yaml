@@ -21,6 +21,8 @@
     # TARGET LINK :     FILE ENTITY
     ~/.wezterm.lua:     d/wezterm.lua
     ~/.vimrc:           d/vim/vimrc
+    ~/.vim/colors:      d/vim/colors
+    ~/.vim/autoload:    d/vim/autoload
     ~/.bashrc:          d/bash/bashrc
     ~/.zshenv:                        d/zsh/zshenv
     ~/.config/zsh/.zshrc:             d/zsh/zshrc
