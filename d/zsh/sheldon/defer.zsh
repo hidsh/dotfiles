@@ -69,6 +69,18 @@ rga-fzf() {
 	xdg-open "$file"
 }
 
+# https://riq0h.jp/2023/11/26/204717/
+fv() {
+  IFS=$'\n' files=($(fzf --height 50% --preview 'bat  --color=always --style=plain {}' --preview-window=border-sharp,right:60% --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  zsh
+}
+
+fman() {
+    man -k . | fzf --height 50% -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' --preview-window=border-sharp,right:60% --bind '?:toggle-preview' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
+}
+export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
+
 # docker completion
 # if [ -e ~/.zsh/completions ]; then
 #   fpath=(~/.zsh/completions $fpath)
