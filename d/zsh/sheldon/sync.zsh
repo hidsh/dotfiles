@@ -119,6 +119,8 @@ ENCODING=en_US.UTF-8
 export LANG=$ENCODING
 export LC_ALL=$ENCODING
 
+export TIME_STYLE=long-iso				# yyyy-mm-dd
+
 export PATH=$HOME/bin:$PATH
 export PATH=~/.cargo/bin:$PATH			# rust tools
 export PATH=~/.fzf/bin:$PATH			# fzf
