@@ -163,3 +163,18 @@ autocmd BufWritePost ~/.lesskey call system("lesskey " .. expand("%"))
 " https://zenn.dev/vim_jp/articles/2023-06-30-vim-substitute-tips
 cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's'
 
+
+
+"
+" theme (color scheme)
+"
+colorscheme onedark
+
+"
+" transparent setting
+"
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none
