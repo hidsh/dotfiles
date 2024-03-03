@@ -64,10 +64,13 @@ RestoreWindowGeometry = false
 # FontFamily = "Monaco"
 ## In Linux
 # FontFamily = "Consolas"
+FontFamily = "Cica"
+#FontFamily = "FantasqueSansMNerdFont"
 ## In Windows
 # FontFamily = "Windows"
 ## Fontsize is
 # FontSize = 12
+FontSize = 13
 ## letterspace is
 # Letterspace = 0
 
