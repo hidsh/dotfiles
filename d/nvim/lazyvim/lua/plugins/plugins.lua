@@ -1,7 +1,9 @@
 return {
   { "rebelot/kanagawa.nvim" },
   { "rafcamlet/nvim-luapad" },
-  { "nvim-telescope/telescope.nvim",
+
+  {
+    "nvim-telescope/telescope.nvim",
     opts = {
       defaults = {
         mappings = {
@@ -13,13 +15,27 @@ return {
       },
     },
   },
-  { "akinsho/bufferline.nvim",
-    opts = function(_, opts)
-      opts.options.show_buffer_close_icons = false
-      opts.options.show_close_icon = false
-    end,
+
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+      },
+      defaults = {
+        mappings = {
+          n = {
+            ["H"] = "<cmd>bufferlinecycleprev<cr>",
+            ["L"] = "<cmd>bufferlinecyclenext<cr>",
+          },
+        },
+      },
+    },
   },
-  { "nvim-lualine/lualine.nvim",
+
+  {
+    "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
@@ -35,4 +51,14 @@ return {
       },
     },
   },
+
+  {
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    version = "*",
+    opts = {
+      open_mapping = [[<c-\>]],
+    },
+  },
+  --  { "", },
 }
