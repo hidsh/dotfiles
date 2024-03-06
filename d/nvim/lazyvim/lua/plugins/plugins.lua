@@ -60,5 +60,27 @@ return {
       open_mapping = [[<c-\>]],
     },
   },
+
+  {
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = {
+      mappings = {
+        comment_line = [[<a-;>]], -- normal mode
+        comment_visual = [[<a-;>]], -- visual mode
+      },
+      --[[
+      options = {
+        hooks = {
+          post = function()
+            -- (next-line 1) と書きたい・・・
+            vim.cmd("normal! j")
+          end,
+        },
+      },
+      --]]
+    },
+  },
+
   --  { "", },
 }
