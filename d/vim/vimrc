@@ -16,8 +16,8 @@ nnoremap ; :
 nnoremap : ;
 
 " swap ; and : (insert mode)
-inoremap ; :
-inoremap : ;
+"inoremap ; :
+"inoremap : ;
 
 "nnoremap : <ESC>	" disable :
 nnoremap 4 $
