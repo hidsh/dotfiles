@@ -20,6 +20,12 @@ config.color_scheme = 'Catppuccin Frappe'
 config.font = wezterm.font('Cica', {weight='Regular', stretch='Normal', style='Normal'})
 config.font_size = 13
 
+-- https://zenn.dev/paiza/articles/9ca689a0365b05
+font = wezterm.font_with_fallback({
+  { family = "Cica" },
+  { family = "Cica", assume_emoji_presentation = true },
+})
+
 -- key bindings
 local act = wezterm.action
 config.keys = {
