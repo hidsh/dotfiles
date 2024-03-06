@@ -23,13 +23,11 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
       },
-      defaults = {
-        mappings = {
-          n = {
-            ["H"] = "<cmd>bufferlinecycleprev<cr>",
-            ["L"] = "<cmd>bufferlinecyclenext<cr>",
-          },
-        },
+    },
+    mappings = {
+      n = {
+        ["H"] = "<cmd>bufferlinecycleprev<cr>",
+        ["L"] = "<cmd>bufferlinecyclenext<cr>",
       },
     },
   },
