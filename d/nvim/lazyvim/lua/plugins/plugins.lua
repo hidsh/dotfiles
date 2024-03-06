@@ -67,14 +67,13 @@ return {
         comment_line = [[<a-;>]], -- normal mode
         comment_visual = [[<a-;>]], -- visual mode
       },
-      --[[
-      options = {
-        hooks = {
-          post = function()
-            -- (next-line 1) と書きたい・・・
-            vim.cmd("normal! j")
-          end,
-        },
+      hooks = {
+        post = function()
+          local mode = vim.api.nvim_get_mode()["mode"]
+          if mode == "n" then
+            vim.cmd("normal! j") -- (next-line 1) on emacs
+          end
+        end,
       },
       --]]
     },
