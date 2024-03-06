@@ -75,7 +75,14 @@ return {
           end
         end,
       },
-      --]]
+    },
+  },
+
+  {
+    "rafcamlet/nvim-luapad",
+    event = "VeryLazy",
+    opts = {
+      split_orientation = "horizontal",
     },
   },
 
