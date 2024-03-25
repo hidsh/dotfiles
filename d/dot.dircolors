@@ -1,0 +1,7 @@
+# Usage
+#
+# Get --> $ dircolors -p > ~/.dircolors
+# Put --> $ eval $(dircolors -b ~/.dircolors)
+
+#OTHER_WRITABLE 34;42 # dir that is other-writable (o+w) and not sticky
+OTHER_WRITABLE 01;34 # dir that is other-writable (o+w) and not sticky

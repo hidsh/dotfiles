@@ -227,3 +227,6 @@ linux_arm)
     ;;
 esac
 
+# LS_COLORS
+eval $(dircolors -b ~/dotfiles/d/dot.dircolors)
+
