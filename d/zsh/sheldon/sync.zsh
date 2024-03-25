@@ -121,8 +121,9 @@ export LC_ALL=$ENCODING
 
 export TIME_STYLE=long-iso				# yyyy-mm-dd
 
+#export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/bin:$PATH
-export PATH=~/.cargo/bin:$PATH			# rust tools
+#export PATH=~/.cargo/bin:$PATH			# rust tools
 export PATH=~/.fzf/bin:$PATH			# fzf
 export PATH="$PATH:/opt/nvim-linux64/bin"	# nvim
 
