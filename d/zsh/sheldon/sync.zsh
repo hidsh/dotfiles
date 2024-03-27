@@ -133,7 +133,7 @@ export VISUAL='nvim'
 export PAGER=less						# for git
 
 # auto-print time for command
-export REPORTTIME=2
+export REPORTTIME=5
 export TIMEFMT=$'⏰%E total'
 
 # change background color to yellow for highlight search word in less
