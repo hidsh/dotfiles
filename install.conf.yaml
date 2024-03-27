@@ -20,8 +20,8 @@
 - link:
     # TARGET LINK :     FILE ENTITY
     ~/.wezterm.lua:     d/wezterm.lua
+    ~/.lesskey:         d/dot.lesskey
     ~/.vimrc:           d/vim/vimrc
-    ~/.vim/colors:      d/vim/colors
     ~/.vim/autoload:    d/vim/autoload
     ~/.bashrc:          d/bash/bashrc
     ~/.zshenv:                        d/zsh/zshenv
