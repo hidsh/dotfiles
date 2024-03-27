@@ -134,7 +134,7 @@ export PAGER=less						# for git
 
 # auto-print time for command
 export REPORTTIME=5
-export TIMEFMT=$'⏰%E total'
+export TIMEFMT=$'# =>⏰%E total'
 
 # change background color to yellow for highlight search word in less
 # https://qiita.com/PruneMazui/items/8a023347772620025ad6
