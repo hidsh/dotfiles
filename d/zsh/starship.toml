@@ -1,6 +1,6 @@
 format = """
-$directory\
 $python\
+$directory\
 $character"""
 
 right_format = """$git_branch$git_status"""
