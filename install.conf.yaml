@@ -34,10 +34,10 @@
     ~/.local/bin/xplr-hack.lua:       d/zsh/xplr-hack.lua
     ~/.local/bin/imv-open.sh:         d/zsh/imv-open.sh
     ~/.local/bin/preview.sh:          d/zsh/skim/preview.sh
-    ~/.Xmodmap:                           d/xmodmap/dot.xmodmap
-    ~/.config/autostart/xmodmap.desktop:  d/xmodmap/xmodmap-at-startup.desktop
-    ~/.local/bin/xmodmap-apply.sh:        d/xmodmap/xmodmap-apply.sh
-    ~/.local/share/applications/xmodmap-apply.desktop:        d/xmodmap/xmodmap-apply.desktop
+    ~/.Xmodmap:                                         d/xmodmap/dot.xmodmap
+    ~/.config/autostart/xmodmap.desktop:                d/xmodmap/xmodmap-at-startup.desktop
+    ~/.local/bin/xmodmap-apply.sh:                      d/xmodmap/xmodmap-apply.sh
+    ~/.local/share/applications/xmodmap-apply.desktop:  d/xmodmap/xmodmap-apply.desktop
 
     # nvim (kickstart)
     #~/.config/nvim/init.lua:                        d/nvim/kickstart/init.lua
