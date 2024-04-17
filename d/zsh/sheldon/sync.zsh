@@ -190,6 +190,7 @@ alias xcd='cd "$(xplr --print-pwd-as-result)"'
 alias pbcopy='xsel --clipboard --input'
 alias no_color='sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"'
 alias clip='no_color | pbcopy'
+alias zz='zi'
 
 # tree
 if [ -f $(which eza) ]; then
