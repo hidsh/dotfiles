@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sleep
+Comment=Suspend the system, RAMs are still alive
+Exec=systemctl suspend
+Terminal=false
+Type=Application
+Categories=System;
+Icon=computer
+
+# desktop-file-validate ~/.local/share/applications/my-sleep.desktop   # for a check 

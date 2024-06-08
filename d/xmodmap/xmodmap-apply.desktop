@@ -4,5 +4,5 @@ Comment=My xmodmap setting
 Exec=/home/g/dotfiles/d/xmodmap/xmodmap-apply.sh
 Type=Application
 Terminal=false
-Icon=/home/g/dotfiles/d/desktop-apps/icon/kbd.svg
+Icon=/home/g/dotfiles/d/xmodmap/kbd.svg
 NoDisplay=false

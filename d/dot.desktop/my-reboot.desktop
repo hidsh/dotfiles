@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Reboot
+Comment=Reboot the system
+Exec=systemctl reboot
+Terminal=false
+Type=Application
+Categories=System;
+Icon=system-reboot
+
+# desktop-file-validate ~/.local/share/applications/my-reboot.desktop   # for a check 
