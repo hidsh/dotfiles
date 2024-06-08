@@ -235,3 +235,6 @@ esac
 # LS_COLORS
 eval $(dircolors -b ~/dotfiles/d/dot.dircolors)
 
+# esp-idf
+# Need '. $HOME/esp/esp-idf/export.sh' after new shell
+alias idf='$HOME/esp/esp-idf/tools/idf.py'
