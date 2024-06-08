@@ -11,6 +11,7 @@ local config = wezterm.config_builder()
 -- options
 config.hide_tab_bar_if_only_one_tab = true
 config.window_background_opacity = 0.92
+config.window_close_confirmation = 'AlwaysPrompt'
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'Catppuccin Mocha'
@@ -29,9 +30,9 @@ font = wezterm.font_with_fallback({
 -- key bindings
 local act = wezterm.action
 config.keys = {
-  { mods = 'ALT', key = 'n', action = act.SpawnWindow },                                        -- new window
+  { mods = 'META', key = 'n', action = act.SpawnWindow },                                       -- new window
   { mods = 'META', key = 't', action = act.SpawnTab 'CurrentPaneDomain' },                      -- new tab
-  { mods = 'META', key = 'w', action = act.CloseCurrentTab {confirm = false} },                 -- close tab
+  { mods = 'CTRL', key = 'w', action = act.CloseCurrentTab {confirm = true} },                  -- close tab
   { mods = 'META', key = 'u', action = act.ActivateTabRelative(-1) },                           -- next tab
   { mods = 'META', key = 'i', action = act.ActivateTabRelative(1) },                            -- previous tab
   { mods = 'CTRL', key = '2', action = act.SplitVertical {domain = 'CurrentPaneDomain'} },      -- split pane
