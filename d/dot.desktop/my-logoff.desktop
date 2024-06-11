@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Logoff
+Comment=Logoff from current session
+Exec=gnome-session-quit --no-prompt
+Terminal=false
+Type=Application
+Categories=System;
+Icon=system-log-out
+
+# desktop-file-validate ~/.local/share/applications/my-logoff.desktop   # for a check 

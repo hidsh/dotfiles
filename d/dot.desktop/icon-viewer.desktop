@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Icon Viewer
+Comment=Icon Viewer for GTK3
+Exec=gtk3-icon-browser
+Terminal=false
+Type=Application
+Categories=System;
+Icon=start-here
+
+# desktop-file-validate ~/.local/share/applications/my-reboot.desktop   # for a check 

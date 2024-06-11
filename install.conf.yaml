@@ -42,6 +42,8 @@
     ~/.local/share/applications/my-shutdown.desktop:    d/dot.desktop/my-shutdown.desktop
     ~/.local/share/applications/my-suspend.desktop:     d/dot.desktop/my-suspend.desktop
     ~/.local/share/applications/my-sleep.desktop:       d/dot.desktop/my-sleep.desktop
+    ~/.local/share/applications/my-logoff.desktop:      d/dot.desktop/my-logoff.desktop
+    ~/.local/share/applications/icon-viewer.desktop:    d/dot.desktop/icon-viewer.desktop
 
     # nvim (kickstart)
     #~/.config/nvim/init.lua:                        d/nvim/kickstart/init.lua
