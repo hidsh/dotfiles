@@ -17,6 +17,17 @@ config.window_close_confirmation = 'AlwaysPrompt'
 -- config.color_scheme = 'Catppuccin Mocha'
 config.color_scheme = 'Catppuccin Frappe'
 
+wezterm.on('toggle-colorscheme', function(window, pane)
+  local alter_name = 'base16'
+  local overrides = window:get_config_overrides() or {}
+  if not overrides.color_scheme then
+    overrides.color_scheme = alter_name
+  else
+    overrides.color_scheme = nil
+  end
+  window:set_config_overrides(overrides)
+end)
+
 -- font
 config.font = wezterm.font('Cica', {weight='Regular', stretch='Normal', style='Normal'})
 config.font_size = 13
@@ -30,6 +41,7 @@ font = wezterm.font_with_fallback({
 -- key bindings
 local act = wezterm.action
 config.keys = {
+  { mods = 'META', key = 'q',action = wezterm.action.EmitEvent 'toggle-colorscheme' },
   { mods = 'META', key = 'n', action = act.SpawnWindow },                                       -- new window
   { mods = 'META', key = 't', action = act.SpawnTab 'CurrentPaneDomain' },                      -- new tab
   { mods = 'CTRL', key = 'w', action = act.CloseCurrentTab {confirm = true} },                  -- close tab
