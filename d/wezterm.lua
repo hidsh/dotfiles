@@ -35,6 +35,9 @@ config.keys = {
   { mods = 'CTRL', key = 'w', action = act.CloseCurrentTab {confirm = true} },                  -- close tab
   { mods = 'META', key = 'u', action = act.ActivateTabRelative(-1) },                           -- next tab
   { mods = 'META', key = 'i', action = act.ActivateTabRelative(1) },                            -- previous tab
+  { mods = 'CTRL', key = 'o', action = act.ActivatePaneDirection 'Next' },						-- next pane
+  { mods = 'SHIFT|CTRL', key = 'o', action = act.ActivatePaneDirection 'Prev' },			    -- previous pane
+  { mods = 'CTRL', key = '0', action = act.CloseCurrentPane {confirm = false} },				-- close current pane
   { mods = 'CTRL', key = '2', action = act.SplitVertical {domain = 'CurrentPaneDomain'} },      -- split pane
   { mods = 'CTRL', key = '3', action = act.SplitHorizontal {domain = 'CurrentPaneDomain'} },    -- split pane
   { mods = 'SHIFT|CTRL', key = 'j', action = act.ScrollByLine(1), },                            -- scroll down
@@ -46,7 +49,9 @@ config.keys = {
 --  { mods = 'CTRL', key = 'j', action = wezterm.action.Nop },                                    -- for cursor moving
   { mods = 'CTRL', key = 'l', action = wezterm.action.Nop },                                    -- for cursor moving
   { mods = 'CTRL', key = 'v', action = wezterm.action.Nop },                                    -- for paste
-  --    { mods = '', key = '', action = act. '' },                              -- 
+  {key="l", mods="SHIFT|CTRL", action="ShowDebugOverlay"},                                      -- lua repl
+
+  --    { mods = '', key = '', action = act. '' },                              --
 }
 
 config.mouse_bindings = {
