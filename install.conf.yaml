@@ -19,6 +19,7 @@
 
 - link:
     # TARGET LINK :     FILE ENTITY
+    ~/vsh:              d/vsh           # v scripts
     ~/.wezterm.lua:     d/wezterm.lua
     ~/.lesskey:         d/dot.lesskey
     ~/.vimrc:           d/vim/vimrc
