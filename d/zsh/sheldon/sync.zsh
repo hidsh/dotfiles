@@ -129,8 +129,8 @@ export PATH=~/.fzf/bin:$PATH			# fzf
 export PATH="$PATH:/opt/nvim-linux64/bin"	# nvim
 
 # editor
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER=less						# for git
 
 # auto-print time for command
