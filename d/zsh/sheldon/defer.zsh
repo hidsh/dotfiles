@@ -54,6 +54,29 @@ if type rg &> /dev/null; then
     #export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
 
+# git log をfzfに渡してshaを入力 (C-g)
+# https://zenn.dev/miyanokomiya/articles/5931a3af9a710d
+select_commit_from_git_log() {
+  git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |\
+    fzf -m --ansi --no-sort --reverse --tiebreak=index --preview 'f() {
+      set -- $(echo "$@" | grep -o "[a-f0-9]\{7\}" | head -1);
+      if [ $1 ]; then
+        git show --color $1
+      else
+        echo "blank"
+      fi
+    }; f {}' |\
+    grep -o "[a-f0-9]\{7\}" |
+    tr '\n' ' '
+}
+function insert_selected_git_logs(){
+    LBUFFER+=$(select_commit_from_git_log)
+    CURSOR=$#LBUFFER
+    zle reset-prompt
+}
+zle -N insert_selected_git_logs
+bindkey "^g" insert_selected_git_logs
+
 # rga: rip-grep all with fzf
 rga-fzf() {
 	RG_PREFIX="rga --files-with-matches"
@@ -193,4 +216,3 @@ eval "$(gh completion -s zsh)"
 
 ####################################################
 # in tray yet
-
