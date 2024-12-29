@@ -24,6 +24,72 @@ alias nano=nop
 find- () {find $* 2>/dev/null}
 rg- () {rg $* 2>/dev/null}
 
+# add to command history for completion 
+print -s "sed -i -e 's///g' *.x"
+print -s "echo $PATH | tr ':' '\n'"
+
+#compdef _sed_comp sed
+#function _sed_comp {
+#	_values 'sed' "sed -i -e 's/A/B/'"
+#}
+
+h() {
+	echo "$@"
+
+	if [[ "$#" -eq 1 ]] && [[ "$1" == '--help' ]]; then
+		echo 'Usage: h               shows help for which command choosen via fzf'
+		echo '       h <command>     shows help for <command>'
+		return 0
+	fi
+
+	local tmp_file=/tmp/h
+	local cmd=''
+
+
+	if [[ "$#" -eq 0 ]]; then
+		cmd=$(echo $PATH | tr ':' '\n' | xargs -I {} find {} -maxdepth 1 -type f -executable 2>/dev/null | xargs -n 1 basename | fzf);
+	else
+		cmd=$@
+	fi
+
+	echo $cmd
+	$cmd --help 1>$tmp_file 2>/dev/null
+	if [ "$?" != 0 ]; then
+		echo "No help for $cmd"
+	else
+		less $tmp_file
+	fi
+}
+
+_m() {
+	local cmd=''
+	local sec=''
+
+	if [ "$#" -eq 0 ]; then
+		cmd=$(echo $PATH | tr ':' '\n' | xargs -I {} find {} -maxdepth 1 -type f -executable 2>/dev/null | xargs -n 1 basename | fzf)
+		echo $cmd
+	elif [[ "$#" -eq 1 ]] && ! [[ "$1" =~ '^[0-9]+$' ]]; then
+		echo !!!
+		cmd=$1
+	elif [[ "$#" -eq 2 ]] && [[ "$1" = '^[0-9]+$' ]] && ! [[ "$2" =~ '^[0-9]+$' ]]; then
+		sec=$1
+		cmd=$2
+	else
+		echo 'Usage: m                         shows manpage for which command choosen via fzf'
+		echo '       m <command>               shows manpage for <command>'
+		echo '       m <section> <command>     shows mappage for <command> in the <section>'
+	fi
+
+	echo $sec
+	echo $cmd
+#	man $sec $cmd 2>/dev/null
+#	if [ "$?" != 0 ]; then
+#		echo "No manpage for $cmd"
+#	else
+#		man $sec $cmd | bat
+#	fi
+}
+
 ####################################################
 # keybindings
 
@@ -44,7 +110,11 @@ export FZF_DEFAULT_OPTS=$FZF_THEME_DRACURA_MOD'--height 40% --reverse --header-l
 #                 echo {} is a binary file || \
 #                 (highlight -O ansi -l {} || \
 #                 cat {}) 2> /dev/null | head -100"'
-export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "bat --theme zenburn --color=always --style=grid --line-range :100 {}"'
+#export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "bat --theme zenburn --color=always --style=grid --line-range :100 {}"'
+export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "[[ -f {} ]] && file --mime-type -b {} | grep -q image && catimg -r2 -w$COLUMNS {} || bat --theme zenburn --color=always --style=grid --line-range :100 {}" --preview-window=right:60%:wrap'
+
+#export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "[[ -f {} ]] && file --mime-type -b {} | grep -q image && viu -w 50 -h 20 {} || bat --theme zenburn --color=always --style=grid --line-range :100 {}" --preview-window=right:60%:wrap'
+
 export FZF_CTRL_R_OPTS='--with-nth=2..'
 #export FZF_ALT_C_OPTS="--preview 'tree -CFA {} | head -200'"
 export FZF_ALT_C_OPTS="--bind ctrl-p:preview-up,ctrl-n:preview-down --preview 'eza -T {} | head -100'"
@@ -54,7 +124,7 @@ if type rg &> /dev/null; then
     #export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
 
-# git log をfzfに渡してshaを入力 (C-g)
+# git log をfzfに渡してshaを入力 (ALT-g)
 # https://zenn.dev/miyanokomiya/articles/5931a3af9a710d
 select_commit_from_git_log() {
   git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |\
@@ -75,21 +145,15 @@ function insert_selected_git_logs(){
     zle reset-prompt
 }
 zle -N insert_selected_git_logs
-bindkey "^g" insert_selected_git_logs
+bindkey "^[g" insert_selected_git_logs
 
-# rga: rip-grep all with fzf
-rga-fzf() {
-	RG_PREFIX="rga --files-with-matches"
-	local file
-	file="$(
-		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-				--phony -q "$1" \
-				--bind "change:reload:$RG_PREFIX {q}" \
-				--preview-window="70%:wrap"
-	)" &&
-	echo "opening $file" &&
-	xdg-open "$file"
+# rgf: rip-grep all with fzf
+function rgf {
+  command rg --color=always --line-number --no-heading --smart-case "${*:-}" \
+  | command fzf -d':' --ansi \
+    --preview "command bat -p --color=always {1} --highlight-line {2}" \
+    --preview-window ~8,+{2}-5 \
+  | awk -F':' '{print $1}'
 }
 
 # https://riq0h.jp/2023/11/26/204717/
@@ -99,10 +163,10 @@ fv() {
   zsh
 }
 
-fman() {
+mf() {
     man -k . | fzf --height 50% -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' --preview-window=border-sharp,right:60% --bind '?:toggle-preview' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
 }
-export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
+#export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
 
 # docker completion
 # if [ -e ~/.zsh/completions ]; then
@@ -160,7 +224,8 @@ esac
 
 # Mac; iterm2
 case $PC in
-mac_intel)
+#mac_intel)
+
 mac_arm)
 	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 	;;
@@ -211,7 +276,7 @@ esac
 #export ESPTOOL_PORT=/dev/cu.usbmodem1101
 
 # github cli
-eval "$(gh completion -s zsh)"
+#eval "$(gh completion -s zsh)"
 
 
 ####################################################

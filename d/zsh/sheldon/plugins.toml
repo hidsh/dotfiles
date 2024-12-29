@@ -33,7 +33,7 @@ github = "zimfw/input"
 apply = ["defer"]
 
 [plugins.mise]
-inline = 'eval "$(~/.local/bin/mise activate zsh)"'
+inline = 'eval "$(mise activate zsh)"'
 
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
@@ -116,7 +116,7 @@ apply = ['source']
 local = '~/dotfiles/d/zsh/sheldon'
 use = ['zoxide-init.zsh']
 apply = ['defer']
-hooks.post = 'eval "$(~/.local/bin/zoxide init --cmd cd zsh)"'
+hooks.post = 'eval "$(zoxide init --cmd cd zsh)"'
 
 [plugins.dotfiles-sync]
 local = '~/dotfiles/d/zsh/sheldon'

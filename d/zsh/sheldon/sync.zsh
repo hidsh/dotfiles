@@ -1,3 +1,4 @@
+# FOR JUMP: #alias
 #
 # zsh/sheldon/sync.sh
 #
@@ -178,13 +179,40 @@ esac
 # alias
 # (to invoke original command, use "\command")
 
+# single shot activators
+alias a=fastfetch
+alias b=btm
+#alias c=
+alias d='dua i'
+#alias e=
+#alias f=
+#alias g=
+#alias h=
+#alias i=
+#alias j=
+#alias k=
+#alias l=
+alias m=batman
+#alias n=nvim
+alias o=xdg-open
+alias p=paruz
+#alias q=
+#alias r=
+#alias s=
+#alias t=
+#alias u=
+#alias v=
+#alias w=
+#alias x=
+#alias y=
+#alias z=
+
 #unalias ls
 #alias ll="ls -FlGh --time-style='+%Y-%m-%d %H:%M:%S' | sed -E '2,$s/ +[0-9]+//'"
 #alias ll="ls -lGh --color --time-style='+%Y-%m-%d %H:%M:%S'"
 alias ls="ls -F --color"
 alias ll="ls -lGh"
 
-alias n=nvim
 alias file='file -h'					# not follow symlink
 alias dd='dd status=progress'
 alias xcd='cd "$(xplr --print-pwd-as-result)"'
@@ -192,6 +220,10 @@ alias pbcopy='xsel --clipboard --input'
 alias no_color='sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"'
 alias clip='no_color | pbcopy'
 alias zz='zi'
+alias lsblk='lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINTS'
+alias ll='yazi'
+alias rg='rg --no-heading'
+alias ff='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 # tree
 if [ -f $(which eza) ]; then
@@ -218,13 +250,13 @@ mac_arm)
 linux_intel)
 	alias cls=clear					# buffer clear
 	alias rm=trash-put				# trash
-	alias e='nautilus . 2> /dev/null &'		# file browser
+	alias e='thunar . 2> /dev/null &'		# file browser
 	;;
 
 linux_arm)
 	alias cls=clear					# buffer clear
 	alias rm=trash-put				# trash
-	alias e='nautilus . 2> /dev/null &'		# file browser
+	alias e='thunar . 2> /dev/null &'		# file browser
 	;;
 
 ### Windows
@@ -239,3 +271,9 @@ eval $(dircolors -b ~/dotfiles/d/dot.dircolors)
 # esp-idf
 # Need '. $HOME/esp/esp-idf/export.sh' after new shell
 alias idf='$HOME/esp/esp-idf/tools/idf.py'
+
+# qmk
+alias qq='qmk compile'
+alias qqq='qmk clean; qmk compile'
+alias qc='qmk clean'
+alias qf='qmk flash'

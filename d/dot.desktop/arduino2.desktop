@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Arduino
-Comment=Arduino IDE 2.0
+Name=Arduino IDE 2.xx
+Comment=Arduino IDE 2.xx
 Exec=/home/g/.local/bin/arduino-ide_2.3.2_Linux_64bit.AppImage
-Icon=/home/g/dotfiles/d/dot.desktop/icons/arduino.ico
+Icon=/home/g/dotfiles/d/dot.desktop/icons/arduino2.ico
 Terminal=false
 Type=Application
 Categories=System;

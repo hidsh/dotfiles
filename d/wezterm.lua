@@ -1,4 +1,5 @@
 -- wezterm configuration
+-- note: the first is used and the second is ignored if it exists duplicated lines
 
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
@@ -52,16 +53,18 @@ config.keys = {
   { mods = 'CTRL', key = '0', action = act.CloseCurrentPane {confirm = false} },				-- close current pane
   { mods = 'CTRL', key = '2', action = act.SplitVertical {domain = 'CurrentPaneDomain'} },      -- split pane
   { mods = 'CTRL', key = '3', action = act.SplitHorizontal {domain = 'CurrentPaneDomain'} },    -- split pane
-  { mods = 'SHIFT|CTRL', key = 'j', action = act.ScrollByLine(1), },                            -- scroll down
-  { mods = 'SHIFT|CTRL', key = 'k', action = act.ScrollByLine(-1) },                            -- scroll up
-  { mods = 'META', key = 'c', action = act.CopyTo 'Clipboard' },                                -- copy
-  { mods = 'META', key = 'v', action = act.PasteFrom 'Clipboard' },                             -- paste
+  { mods = 'SHIFT|CTRL', key = 'j', action = act.ScrollByLine(4), },                            -- scroll down
+  { mods = 'SHIFT|CTRL', key = 'k', action = act.ScrollByLine(-4) },                            -- scroll up
+--{ mods = 'META', key = 'c', action = act.CopyTo 'Clipboard' },                                -- copy
+  { mods = 'CTRL', key = 'c', action = act.CopyTo 'Clipboard' },                                -- copy
+--{ mods = 'META', key = 'v', action = act.PasteFrom 'Clipboard' },                             -- paste
+  { mods = 'CTRL', key = 'v', action = act.PasteFrom 'Clipboard' },                             -- paste
+  { mods = 'CTRL', key = 'g', action = act.SendKey { mods = 'CTRL', key = 'c'} },
   { mods = 'META', key = 'h', action = act.SendKey { mods = 'SHIFT|CTRL', key = 'w'} },         -- zsh:backward-kill-word
   { mods = 'META', key = 'f', action = act.SendKey { mods = 'META', key = 'f'} },               -- zsh:emacs-forward-word
 --  { mods = 'CTRL', key = 'j', action = wezterm.action.Nop },                                    -- for cursor moving
   { mods = 'CTRL', key = 'l', action = wezterm.action.Nop },                                    -- for cursor moving
-  { mods = 'CTRL', key = 'v', action = wezterm.action.Nop },                                    -- for paste
-  {key="l", mods="SHIFT|CTRL", action="ShowDebugOverlay"},                                      -- lua repl
+  { mods="SHIFT|CTRL", key="l", action="ShowDebugOverlay"},                                      -- lua repl
 
   --    { mods = '', key = '', action = act. '' },                              --
 }

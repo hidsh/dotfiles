@@ -6,3 +6,5 @@ import os
 args := os.args[1..]
 
 println(args)
+
+// =>['kk', '/cc', '/dd', 'aa', 'bb']

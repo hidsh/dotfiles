@@ -161,6 +161,7 @@ autocmd BufWritePost ~/.lesskey call system("lesskey " .. expand("%"))
 
 " :sでの置換を楽にする
 " https://zenn.dev/vim_jp/articles/2023-06-30-vim-substitute-tips
+" Usage:  :s<Space>
 cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] .. "%s///g<Left><Left>" : 's'
 
 
@@ -168,8 +169,8 @@ cnoreabbrev <expr> s getcmdtype() .. getcmdline() ==# ':s' ? [getchar(), ''][1] 
 "
 " theme (color scheme)
 "
-colorscheme onedark
-colorscheme hybrid_material
+"colorscheme onedark
+"colorscheme hybrid_material
 
 "
 " transparent setting
@@ -179,3 +180,12 @@ colorscheme hybrid_material
 "highlight LineNr ctermbg=none
 "highlight Folded ctermbg=none
 "highlight EndOfBuffer ctermbg=none
+
+" vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
