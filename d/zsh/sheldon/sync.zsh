@@ -47,7 +47,8 @@ fi
 
 ####################################################
 # zshell options
-setopt autocd
+setopt EXTENDED_HISTORY     # 開始と終了を記録
+#setopt autocd
 setopt correct			# correct typing command
 setopt hist_ignore_all_dups	# 古いものと同じなら古いものを削除
 setopt hist_save_no_dups	# 古いコマンドと同じものは無視
@@ -58,13 +59,21 @@ setopt hist_verify		# ヒストリを呼び出してから実行する間に一�
 setopt hist_expand		# 補完時にヒストリを自動的に展開
 setopt inc_append_history	# ヒストリをインクリメンタルに追加
 setopt share_history		# 他のターミナルとヒストリを共有
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000       # in-memory history
+export SAVEHIST=100000      # in-file history
+
+# save only successful commands into the history
+zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
+
+# zshaddhistory() {
+#   emulate -L zsh
+#   [[ ${1%%$'\n'} != ${~HISTORY_IGNORE} ]]
+#   [[ "$?" == 0 ]]
+# }
 
 # small word for C-w, M-h
-WORDCHARS='*?.[]~&;!#$%^(){}<>'
-
+export WORDCHARS='*?.[]~&;!#$%^(){}<>'
 
 # eval `dircolors -b ~/.dircolors`		# Windows
 
