@@ -180,7 +180,7 @@ esac
 # (to invoke original command, use "\command")
 
 # single shot activators
-alias a=fastfetch
+alias a=fastfetch		# about
 alias b=btm
 #alias c=
 alias d='dua i'
@@ -195,7 +195,7 @@ alias d='dua i'
 alias m=batman
 #alias n=nvim
 alias o=xdg-open
-alias p=paruz
+alias p=paru
 #alias q=
 #alias r=
 #alias s=
