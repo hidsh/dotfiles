@@ -18,7 +18,8 @@
 - clean: ['~']
 
 - link:
-    # TARGET LINK :     FILE ENTITY
+    # TARGET LINK:      FILE ENTITY
+    ~/.config/hypr/custom.conf:       d/hypr/custom.conf
     ~/vsh:              d/vsh           # v scripts
     ~/.wezterm.lua:     d/wezterm.lua
     ~/.lesskey:         d/dot.lesskey
