@@ -8,7 +8,9 @@ This repo is for:
 # Prerquisites
 
 This repo uses [dotbot](https://github.com/anishathalye/dotbot).
+But no need to install it because it is included as a submodule.
 
+Additional requiremens to be installed are following:
 - git
 - wezterm
 - neovim (based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim))
@@ -21,7 +23,7 @@ This repo uses [dotbot](https://github.com/anishathalye/dotbot).
 
 # Folder structure
 
-Folder `d` has main contents as follows:
+Folder `d` has main contents as following:
 ```
 ~/dotfiles $ \tree -Fa -I .git -I dotbot d
 d/
