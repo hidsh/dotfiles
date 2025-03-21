@@ -1,12 +1,13 @@
 # My dotfiles
 
-This repo uses [dotbot](https://github.com/anishathalye/dotbot).
-
-This branch is for:
-	- Machine: Macbook Pro late 2013
-	- OS: Pop!\_OS 22.04 (x86\_64)
+This repo is for:
+- Machine: AskHand Mini PC (Ryzen 5500U 16GB/1TB+256GB) ~Macbook Pro late 2013~
+- OS: Arch Linux ~Pop!\_OS 22.04 (x86\_64)~
+- DE/WM: Hyprland
 
 # Prerquisites
+
+This repo uses [dotbot](https://github.com/anishathalye/dotbot).
 
 - git
 - wezterm
@@ -20,8 +21,7 @@ This branch is for:
 
 # Folder structure
 
-`dotfiles/d` has main contents like that.
-
+Folder `d` has main contents as follows:
 ```
 ~/dotfiles $ \tree -Fa -I .git -I dotbot d
 d/
@@ -43,9 +43,10 @@ d/
 
 # Usage
 
-## On a New Machines
+## Install to new machines
 
 ```
+cd ~
 git clone git@github.com:hidsh/dotfiles.git --recursive
 cd dotfiles && ./install
 ```
@@ -53,7 +54,9 @@ cd dotfiles && ./install
 ## Update
 
 ```
-git fetch
-git pull && ./install
+cd ~/dotfiles
+git status	# check not dirty 
+git pull
+./install
 ```
 
