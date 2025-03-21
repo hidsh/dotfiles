@@ -1,5 +1,7 @@
 # My dotfiles
 
+
+
 This repo is for:
 - Machine: AskHand Mini PC (Ryzen 5500U 16GB/1TB+256GB) ~Macbook Pro late 2013~
 - OS: Arch Linux ~Pop!\_OS 22.04 (x86\_64)~
@@ -11,6 +13,9 @@ This repo uses [dotbot](https://github.com/anishathalye/dotbot).
 But no need to install it because it is included as a submodule.
 
 Additional requiremens to be installed are following:
+- [archinstall](https://wiki.archlinux.org/title/Archinstall)
+- hyprland (via archinstall)
+- [ML4W hyprdots](https://github.com/mylinuxforwork/dotfiles)
 - git
 - wezterm
 - neovim (based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim))
