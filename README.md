@@ -1,13 +1,19 @@
 # My dotfiles
 
-This repo uses [dotbot](https://github.com/anishathalye/dotbot).
+![screenshot](https://pbs.twimg.com/media/GmkzsigaEAIEbfA?format=jpg&name=4096x4096)
 
-This branch is for:
-	- Machine: Macbook Pro late 2013
-	- OS: Pop!\_OS 22.04 (x86\_64)
+This repo is for:
+- PC: AskHand Mini PC (Ryzen 5500U 16GB/1TB+256GB) ~Macbook Pro late 2013~
+- OS: Arch Linux ~Pop!\_OS 22.04 (x86\_64)~
+- DE/WM: Hyprland
 
 # Prerquisites
 
+This repo uses [dotbot](https://github.com/anishathalye/dotbot).
+But no need to install it because it is included as a submodule.
+
+Additional requiremens to be installed are following:
+- [archinstall](https://wiki.archlinux.org/title/Archinstall) + hyprland + [ML4W hyprdots](https://github.com/mylinuxforwork/dotfiles)<br> (YouTube: [Install ARCH Linux with HYPRLAND profile plus the ML4W Dotfiles 2.9.7.4. THE full installation guide](https://youtu.be/sVFnd5LAYAc?si=qkykX7vqlmMmCfpX&t=302))
 - git
 - wezterm
 - neovim (based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim))
@@ -20,8 +26,7 @@ This branch is for:
 
 # Folder structure
 
-`dotfiles/d` has main contents like that.
-
+Folder `d` has main contents as following:
 ```
 ~/dotfiles $ \tree -Fa -I .git -I dotbot d
 d/
@@ -43,9 +48,10 @@ d/
 
 # Usage
 
-## On a New Machines
+## Install to new machines
 
 ```
+cd ~
 git clone git@github.com:hidsh/dotfiles.git --recursive
 cd dotfiles && ./install
 ```
@@ -53,7 +59,9 @@ cd dotfiles && ./install
 ## Update
 
 ```
-git fetch
-git pull && ./install
+cd ~/dotfiles
+git status	# check if not dirty 
+git pull
+./install
 ```
 
