@@ -23,8 +23,9 @@
     ~/vsh:                            d/vsh           # v scripts
     ~/.wezterm.lua:                   d/wezterm.lua
     ~/.lesskey:                       d/dot.lesskey
-    ~/.vimrc:                         d/vim/vimrc
-    ~/.vim/autoload:                  d/vim/autoload
+    ~/.config/nvim/init.vim           d/nvim/init.vim   # nvim / hyprland
+    #    ~/.vimrc:                         d/vim/vimrc
+    #    ~/.vim/autoload:                  d/vim/autoload
     ~/.bashrc:                        d/bash/bashrc
     ~/.zshenv:                        d/zsh/zshenv
     ~/.config/zsh/.zshrc:             d/zsh/zshrc
