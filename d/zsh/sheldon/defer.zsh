@@ -2,29 +2,32 @@
 # zsh/sheldon/defer.sh
 #
 
+#echo zsh/sheldon/defer.sh
 ####################################################
 # functions
 
 # for ubuntu
-ubuntu-version() {
-	if [ -f /etc/lsb-release ]; then
-		echo `cat /etc/lsb-release |grep -oP '(?<=").+(?=")'`
-	fi
-}
+#ubuntu-version() {
+#	if [ -f /etc/lsb-release ]; then
+#		echo `cat /etc/lsb-release |grep -oP '(?<=").+(?=")'`
+#	fi
+#}
 
 # file path in title bar
 precmd() {eval 'echo -ne "\033]0;${PWD/#$HOME/~}\007"'}
 
 nop() {
-	echo "This command is unbound by 'nop()' in ~/.zshrc"
+	echo "This command is unbound by 'nop()' in zsh/sheldon/defer.sh"
 }
 alias pico=nop
 alias nano=nop
 
+#foo () {echo $1}
 find- () {find $* 2>/dev/null}
 rg- () {rg $* 2>/dev/null}
+psa () {ps aux | rg $1}
 
-# add to command history for completion 
+# add to command history for completion
 print -s "sed -i -e 's///g' *.x"
 print -s "echo $PATH | tr ':' '\n'"
 
@@ -34,31 +37,25 @@ print -s "echo $PATH | tr ':' '\n'"
 #}
 
 h() {
-	echo "$@"
+    local tmp_file=/tmp/h
+    local cmd=''
 
-	if [[ "$#" -eq 1 ]] && [[ "$1" == '--help' ]]; then
-		echo 'Usage: h               shows help for which command choosen via fzf'
-		echo '       h <command>     shows help for <command>'
-		return 0
-	fi
+    if [ "$#" -eq 0 ]; then
+        cmd=$(echo $PATH | tr ':' '\n' | xargs -I {} find {} -maxdepth 1 -type f -executable 2>/dev/null | xargs -n 1 basename | fzf);
+    elif [ "$#" -eq 1 ]; then
+        cmd=$1
+    else
+        echo 'Usage: h               shows help for which command choosen via fzf'
+        echo '       h <command>     shows help for <command>'
+    fi
 
-	local tmp_file=/tmp/h
-	local cmd=''
-
-
-	if [[ "$#" -eq 0 ]]; then
-		cmd=$(echo $PATH | tr ':' '\n' | xargs -I {} find {} -maxdepth 1 -type f -executable 2>/dev/null | xargs -n 1 basename | fzf);
-	else
-		cmd=$@
-	fi
-
-	echo $cmd
-	$cmd --help 1>$tmp_file 2>/dev/null
-	if [ "$?" != 0 ]; then
-		echo "No help for $cmd"
-	else
-		less $tmp_file
-	fi
+    $cmd --help 1>$tmp_file 2>/dev/null
+#    if [ "$?" != 0 ]; then
+    if [ "$?" != "$?" ]; then
+        echo "No help for $cmd"
+    else
+        less $tmp_file
+    fi
 }
 
 _m() {
@@ -111,9 +108,10 @@ export FZF_DEFAULT_OPTS=$FZF_THEME_DRACURA_MOD'--height 40% --reverse --header-l
 #                 (highlight -O ansi -l {} || \
 #                 cat {}) 2> /dev/null | head -100"'
 #export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "bat --theme zenburn --color=always --style=grid --line-range :100 {}"'
-export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "[[ -f {} ]] && file --mime-type -b {} | grep -q image && catimg -r2 -w$COLUMNS {} || bat --theme zenburn --color=always --style=grid --line-range :100 {}" --preview-window=right:60%:wrap'
-
 #export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "[[ -f {} ]] && file --mime-type -b {} | grep -q image && viu -w 50 -h 20 {} || bat --theme zenburn --color=always --style=grid --line-range :100 {}" --preview-window=right:60%:wrap'
+#export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview "[[ -f {} ]] && file --mime-type -b {} | grep -q image && catimg -r2 -w$COLUMNS {} || bat --theme zenburn --color=always --style=grid --line-range :100 {}" --preview-window=right:60%:wrap'
+export FZF_CTRL_T_OPTS='--bind ctrl-p:preview-up,ctrl-n:preview-down --preview="pistol {}" || bat --theme zenburn --color=always --style=grid --line-range :100 {}" --preview-window=right:60%:wrap'
+
 
 export FZF_CTRL_R_OPTS='--with-nth=2..'
 #export FZF_ALT_C_OPTS="--preview 'tree -CFA {} | head -200'"
@@ -234,6 +232,16 @@ mac_arm)
     ;;
 esac
 
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # for qmk_firmware
 #export GTAGSLIBPATH=/usr/local/Cellar/avr-gcc/7.3.0/avr/include
 # :/usr/local/Cellar/avr-gcc/7.3.0/avr/include/sys\
@@ -277,6 +285,21 @@ esac
 
 # github cli
 #eval "$(gh completion -s zsh)"
+
+####################################################
+source ~/Dropbox/sec/apik
+
+####################################################
+translate() {
+    if [ $# -lt 1 ]; then
+        echo -n '>'
+        read text
+    else 
+        text="$@"
+    fi
+
+    deepl-linux -t ja -i $text
+}
 
 
 ####################################################

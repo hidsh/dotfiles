@@ -32,16 +32,17 @@ inline = 'autoload -Uz colors && zsh-defer colors'
 github = "zimfw/input"
 apply = ["defer"]
 
-[plugins.mise]
-inline = 'eval "$(mise activate zsh)"'
+#[plugins.mise]
+#inline = 'eval "$(mise activate zsh)"'
 
-[plugins.starship]
-inline = 'eval "$(starship init zsh)"'
+#[plugins.starship]
+#inline = 'eval "$(starship init zsh)"'
+# hooks.pre = "export STARSHIP_CACHE=~/Downloads"
 
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
 apply = ["defer"]
-hooks.post = "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888'"
+hooks.pre = "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#AAA'"
 
 
 [plugins.zsh-completions]

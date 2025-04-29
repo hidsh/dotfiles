@@ -3,6 +3,8 @@
 # zsh/sheldon/sync.sh
 #
 
+#echo zsh/sheldon/sync.sh
+
 # distingish on which OS/CPU running
 case $(uname -s) in
 Darwin)
@@ -43,7 +45,8 @@ fi
 # stty werase undef
 # bindkey '"\eh": backward-kill-word'
 
-
+bindkey '^j' history-search-forward
+bindkey '^k' history-search-backward
 
 ####################################################
 # zshell options
@@ -139,9 +142,11 @@ export PATH=~/.fzf/bin:$PATH			# fzf
 export PATH="$PATH:/opt/nvim-linux64/bin"	# nvim
 
 # editor
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR=nvim
+export VISUAL=$EDITOR
 export PAGER=less						# for git
+
+#alias vim=$EDITOR                      # better than alias, `sudo ln -s /usr/bin/nvim /usr/bin/vim` for `sudo`
 
 # auto-print time for command
 export REPORTTIME=5
@@ -192,15 +197,15 @@ esac
 alias a=fastfetch		# about
 alias b=btm
 #alias c=
-alias d='dua i'
-#alias e=
+#alias d='dua i'
+alias e='echo $PATH | tr ":" "\n"'
 #alias f=
 #alias g=
 #alias h=
 #alias i=
 #alias j=
 #alias k=
-#alias l=
+alias l=ls -la
 alias m=batman
 #alias n=nvim
 alias o=xdg-open
@@ -208,7 +213,7 @@ alias p=paru
 #alias q=
 #alias r=
 #alias s=
-#alias t=
+alias t=translate
 #alias u=
 #alias v=
 #alias w=
@@ -230,8 +235,8 @@ alias no_color='sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"'
 alias clip='no_color | pbcopy'
 alias zz='zi'
 alias lsblk='lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINTS'
-alias ll='yazi'
-alias rg='rg --no-heading'
+#alias ll='yazi'
+alias rg='rg --hidden --no-heading'
 alias ff='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 # tree

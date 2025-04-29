@@ -1,7 +1,7 @@
 format = """
 $python\
-$directory\
-$character"""
+$directory$character"""
+# \[51;A\]\
 
 right_format = """$git_branch$git_status"""
 command_timeout = 5000
@@ -13,8 +13,29 @@ style = "blue"
 read_only = ""
 
 [character]
-success_symbol = "[󰜴](bright-green)"
-error_symbol = "[󰜴](red)"
+# 
+# 
+# 
+# 
+# 
+# 
+#
+# 
+# 
+# 
+# 
+# 
+# 
+#success_symbol = "[󰜴](bright-green)"
+#error_symbol = "[󰜴](red)"
+#vimcmd_symbol = "[ ](yellow)"
+
+# success_symbol = "[>>](bright-green)"
+# error_symbol = "[>>](red)"
+# vimcmd_symbol = "[V ](yellow)"
+
+success_symbol = "[](bright-green)"
+error_symbol = "[](red)"
 vimcmd_symbol = "[ ](yellow)"
 
 [git_branch]
