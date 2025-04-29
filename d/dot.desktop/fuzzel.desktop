@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Fuzzel
+Comment=Application Launcher
+Exec=fuzzel
+Terminal=false
+Type=Application
+Categories=System;
+Icon=media-floppy
+
+# desktop-file-validate ~/.local/share/applications/foo.desktop   # for a check 
+# ln -s ~/dotfiles/d/dot.desktop/foo.desktop ~/.local/share/applications
