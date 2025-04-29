@@ -89,12 +89,15 @@ _m() {
 
 ####################################################
 # keybindings
+# check by 'bindkey | less'
 
 # unbind shell keybindings
-# check by 'bindkey | less'
 bindkey -r "^[T"        # alt-T: transpose-words
 bindkey -r "^[t"        # alt-t: transpose-words
 bindkey -r "^[h"		# alt-h: run-help
+
+# new bind
+bindkey "^[h" backward-kill-word
 
 ####################################################
 # fzf
@@ -294,7 +297,7 @@ translate() {
     if [ $# -lt 1 ]; then
         echo -n '>'
         read text
-    else 
+    else
         text="$@"
     fi
 
