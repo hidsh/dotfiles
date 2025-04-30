@@ -25,7 +25,7 @@ alias nano=nop
 #foo () {echo $1}
 find- () {find $* 2>/dev/null}
 rg- () {rg $* 2>/dev/null}
-psa () {ps aux | rg $1}
+ps- () {ps aux | rg $1}
 
 # add to command history for completion
 print -s "sed -i -e 's///g' *.x"
@@ -37,7 +37,7 @@ print -s "echo $PATH | tr ':' '\n'"
 #}
 
 h() {
-    local tmp_file=/tmp/h
+    local content=''
     local cmd=''
 
     if [ "$#" -eq 0 ]; then
@@ -47,14 +47,15 @@ h() {
     else
         echo 'Usage: h               shows help for which command choosen via fzf'
         echo '       h <command>     shows help for <command>'
+        return 1
     fi
 
-    $cmd --help 1>$tmp_file 2>/dev/null
-#    if [ "$?" != 0 ]; then
-    if [ "$?" != "$?" ]; then
-        echo "No help for $cmd"
+    content=$($cmd --help 1)
+#   if [ "$?" != 0 ]; then
+    if [ "$?" != "$?" ]; then       # temporarily ignore result (workaround)
+        echo "No help for `$cmd`"
     else
-        less $tmp_file
+        echo $content | less
     fi
 }
 
