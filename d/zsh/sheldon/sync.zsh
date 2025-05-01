@@ -157,6 +157,10 @@ export TIMEFMT=$'# =>⏰%E total'
 export LESS_TERMCAP_so=$(echo -e '\e[1;43m\e[30m')
 export LESS_TERMCAP_se=$(echo -e '\e[0m')
 
+# lesspipe
+export LESSOPEN="|lesspipe.sh %s"
+
+
 case $PC in
 mac_intel)
     # postgresql@13 (from brew)"
