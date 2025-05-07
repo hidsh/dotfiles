@@ -22,10 +22,45 @@ nop() {
 alias pico=nop
 alias nano=nop
 
-#foo () {echo $1}
-find- () {find $* 2>/dev/null}
-rg- () {rg $* 2>/dev/null}
-ps- () {ps aux | rg $1}
+foo () {echo $1}
+ps-1 () {
+    local labels=(pid user pcpu %mem cmd)
+
+    if [[ "$1" = '' ]]; then
+        ps axo ${(j:,:)labels} --sort=-pcpu,-%mem 2>/dev/null
+    else
+        ps axo ${(j:,:)labels} --sort=-pcpu,-%mem | cut -c -$(( COLUMNS - 2 )) 2>/dev/null
+    fi
+}
+alias p-='ps-1 | less -S'
+
+kill- () {
+    local help="Usage: $0
+Kill specified process via fzf"
+
+    if [[ "$#" -eq 1 ]] && [ "$1" = '--help' ]; then
+        echo $help; return 0
+    elif [[ ! "$#" -eq 0 ]]; then
+        echo $help; return 1
+    fi
+
+    procs=$(ps-1 t)
+    local sel=$(echo $procs | fzf --header-lines=1 --ellipsis='')
+    local line=(${(@s: :)sel})
+    local pid=${line[1]}
+    local user=${line[2]}
+    local cmdline=${line[5]}
+    # local cmd=''
+    [ "$user" = 'root' ] && cmd='sudo '     # needs `g ALL=(ALL) NOPASSWD: ALL` in /etc/sudoers.d
+
+    $cmd kill -KILL ${pid}
+
+    [[ ! "$?" -eq 0 ]] && echo 'Failed'
+}
+
+# find- () {}
+# rg- () {rg $* 2>/dev/null}
+# ps- () {ps aux | rg $1}
 
 # add to command history for completion
 print -s "sed -i -e 's///g' *.x"
