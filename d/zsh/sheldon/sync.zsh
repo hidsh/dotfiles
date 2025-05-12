@@ -269,7 +269,7 @@ mac_arm)
 
 ### Linux
 linux_intel)
-	alias cls=clear					# buffer clear
+    alias cls='printf "\033c"'      # buffer clear
 	alias rm=trash-put				# trash
 	alias e='thunar . 2> /dev/null &'		# file browser
 	;;
