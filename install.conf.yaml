@@ -52,6 +52,8 @@
     ~/.local/share/applications/my-logoff.desktop:      d/dot.desktop/my-logoff.desktop
     ~/.local/share/applications/icon-viewer.desktop:    d/dot.desktop/icon-viewer.desktop
 
+    ~/.local/bin/ping-scan.sh:                          d/my-bin/ping-scan.sh  
+
     # nvim (kickstart)
     #~/.config/nvim/init.lua:                        d/nvim/kickstart/init.lua
     #~/.config/nvim/lua/custom/plugins/my-add.lua:   d/nvim/kickstart/my-add.lua
