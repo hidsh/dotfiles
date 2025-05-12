@@ -24,7 +24,7 @@
     ~/.config/kitty/custom.conf:      d/kitty/custom.conf
     ~/.config/kitty/keymap.py:        d/kitty/keymap.py
     ~/vsh:                            d/vsh           # v scripts
-    ~/.wezterm.lua:                   d/wezterm.lua
+    # ~/.wezterm.lua:                   d/wezterm.lua
     ~/.lesskey:                       d/dot.lesskey
     ~/.config/nvim/init.vim           d/nvim/init.vim   # nvim / hyprland
     #    ~/.vimrc:                         d/vim/vimrc
@@ -41,10 +41,10 @@
     ~/.local/bin/xplr-hack.lua:       d/zsh/xplr-hack.lua
     ~/.local/bin/imv-open.sh:         d/zsh/imv-open.sh
     ~/.local/bin/preview.sh:          d/zsh/skim/preview.sh
-    ~/.Xmodmap:                                         d/xmodmap/dot.xmodmap
-    ~/.config/autostart/xmodmap.desktop:                d/xmodmap/xmodmap-at-startup.desktop
-    ~/.local/bin/xmodmap-apply.sh:                      d/xmodmap/xmodmap-apply.sh
-    ~/.local/share/applications/xmodmap-apply.desktop:  d/xmodmap/xmodmap-apply.desktop
+    #~/.Xmodmap:                                         d/xmodmap/dot.xmodmap
+    # ~/.config/autostart/xmodmap.desktop:                d/xmodmap/xmodmap-at-startup.desktop
+    # ~/.local/bin/xmodmap-apply.sh:                      d/xmodmap/xmodmap-apply.sh
+    # ~/.local/share/applications/xmodmap-apply.desktop:  d/xmodmap/xmodmap-apply.desktop
     ~/.local/share/applications/my-reboot.desktop:      d/dot.desktop/my-reboot.desktop
     ~/.local/share/applications/my-shutdown.desktop:    d/dot.desktop/my-shutdown.desktop
     ~/.local/share/applications/my-suspend.desktop:     d/dot.desktop/my-suspend.desktop
@@ -69,9 +69,9 @@
   - clean: ['~']
   - link:
     # TARGET LINK :                                         FILE ENTITY
-    /usr/lib/systemd/system-sleep/xmodmap-at-resume.sh:     d/xmodmap/xmodmap-at-resume.sh
+    # /usr/lib/systemd/system-sleep/xmodmap-at-resume.sh:     d/xmodmap/xmodmap-at-resume.sh
     #/usr/share/applications/goneovim.desktop:               d/goneovim/goneovim.desktop
-    /usr/bin/goneovim:                                      d/goneovim/goneovim
+    # /usr/bin/goneovim:                                      d/goneovim/goneovim
 
 
 - create:
