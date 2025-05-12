@@ -21,6 +21,8 @@
     # TARGET LINK:      FILE ENTITY
     ~/.config/hypr/conf/keybindings/default.conf:   d/hypr/keybindings-default.conf
     ~/.config/hypr/custom.conf:       d/hypr/custom.conf
+    ~/.config/kitty/custom.conf:      d/kitty/custom.conf
+    ~/.config/kitty/keymap.py:        d/kitty/keymap.py
     ~/vsh:                            d/vsh           # v scripts
     ~/.wezterm.lua:                   d/wezterm.lua
     ~/.lesskey:                       d/dot.lesskey
