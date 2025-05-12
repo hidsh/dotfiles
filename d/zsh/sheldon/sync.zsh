@@ -234,9 +234,11 @@ alias ll="ls -lGh"
 
 alias file='file -h'					# not follow symlink
 alias dd='dd status=progress'
+alias dmesg-tail='sudo dmesg -W --time-format iso'
 alias xcd='cd "$(xplr --print-pwd-as-result)"'
 alias pbcopy='xsel --clipboard --input'
 alias no-color='sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"'
+alias no-err='noglob command 2>/dev/null'
 alias clip='no-color | wl-copy'
 alias zz='zi'
 alias lsblk='lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINTS'
