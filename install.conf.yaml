@@ -53,6 +53,9 @@
     ~/.local/share/applications/icon-viewer.desktop:    d/dot.desktop/icon-viewer.desktop
 
     ~/.local/bin/ping-scan.sh:                          d/my-bin/ping-scan.sh  
+    ~/.local/bin/pywal-colors:                          d/my-bin/pywal-colors
+    ~/.local/bin/pywal-colors.py:                       d/my-bin/pywal-colors.py
+    ~/.local/bin/pywal-colors.jq:                       d/my-bin/pywal-colors.jq
 
     # nvim (kickstart)
     #~/.config/nvim/init.lua:                        d/nvim/kickstart/init.lua

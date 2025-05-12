@@ -1,0 +1,27 @@
+#!/usr/bin/zsh
+
+# s=$(wal --preview | sed "s/Current colorscheme://g"| sed -z "s/\s/\n/8")
+# echo $s
+
+
+# pywal_colors_path=~/.cache/wal/colors
+# lines=( ${(@f)"$(< "${pywal_colors_path}")"} )
+
+
+# for x in $lines; do
+#     echo
+#     echo $x
+# done
+
+
+
+
+
+# cat ~/.cache/wal/colors.json | jq -r -L ./pywal-colors.jq '.colors'
+
+for i in {0..7}; do; printf "%4d\t" "${i}"; done
+echo
+wal --preview | tail -n3 | head -n2 | sed -E "s/ {4}/        /g"
+for i in {8..15}; do; printf "%4d\t" "${i}"; done
+echo \\n
+cat ~/.cache/wal/colors | tr "\n" " " | sed -z "s/\s/\n/8" && echo \\n
