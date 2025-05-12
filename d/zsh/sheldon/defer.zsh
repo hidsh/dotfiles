@@ -3,8 +3,9 @@
 #
 
 #echo zsh/sheldon/defer.sh
-####################################################
+# ------------------------------
 # functions
+# ------------------------------
 
 # for ubuntu
 #ubuntu-version() {
@@ -72,7 +73,6 @@ print -s "echo $PATH | tr ':' '\n'"
 #}
 
 h() {
-    local content=''
     local cmd=''
 
     if [ "$#" -eq 0 ]; then
@@ -80,12 +80,12 @@ h() {
     elif [ "$#" -eq 1 ]; then
         cmd=$1
     else
-        echo 'Usage: h               shows help for which command choosen via fzf'
+        echo 'Usage: h               shows help for which command chosen via fzf'
         echo '       h <command>     shows help for <command>'
         return 1
     fi
 
-    content=$($cmd --help 1)
+    local content=$($cmd --help 1)
 #   if [ "$?" != 0 ]; then
     if [ "$?" != "$?" ]; then       # temporarily ignore result (workaround)
         echo "No help for `$cmd`"
@@ -125,6 +125,7 @@ _m() {
 
 ####################################################
 # keybindings
+# ------------------------------
 # check by 'bindkey | less'
 
 # unbind shell keybindings
@@ -135,8 +136,9 @@ bindkey -r "^[h"		# alt-h: run-help
 # new bind
 bindkey "^[h" backward-kill-word
 
-####################################################
+# ------------------------------
 # fzf
+# ------------------------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_COMPLETION_TRIGGER=',,'	# ,,<TAB>でfzfに入る
@@ -200,9 +202,6 @@ fv() {
   zsh
 }
 
-mf() {
-    man -k . | fzf --height 50% -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' --preview-window=border-sharp,right:60% --bind '?:toggle-preview' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
-}
 #export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
 
 # docker completion
@@ -222,8 +221,9 @@ mf() {
 FZF_MY_MOVE_KEYS=' --bind=tab:accept,ctrl-space:toggle+down,ctrl-p:preview-up,ctrl-n:preview-down'
 FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS$FZF_MY_MOVE_KEYS
 
-####################################################
+# ------------------------------
 # various commands, apps, sdk and/or programs
+# ------------------------------
 
 # meld
 # alias meld='/Applications/Meld.app/Contents/MacOS/Meld'		# Mac
@@ -281,7 +281,10 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-# for qmk_firmware
+# ------------------------------
+# dev-env
+# ------------------------------
+# qmk_firmware
 #export GTAGSLIBPATH=/usr/local/Cellar/avr-gcc/7.3.0/avr/include
 # :/usr/local/Cellar/avr-gcc/7.3.0/avr/include/sys\
 # :/usr/local/Cellar/avr-gcc/7.3.0/avr/include/avr\
@@ -325,10 +328,14 @@ function y() {
 # github cli
 #eval "$(gh completion -s zsh)"
 
-####################################################
+# ------------------------------
+# dropbox
+# ------------------------------
 source ~/Dropbox/sec/apik
 
-####################################################
+# ------------------------------
+# deepl
+# ------------------------------
 translate() {
     if [ $# -lt 1 ]; then
         echo -n '>'
@@ -341,5 +348,21 @@ translate() {
 }
 
 
-####################################################
+# ------------------------------
+# terminal width/height
+# ------------------------------
+#  trap 'eval $(LINES=""; stty size|if read r c
+#      then for x in `seq $c`
+#      do LINES="${LINES}-"
+#      done
+#      echo LINES="$LINES"
+#      fi
+#  )' SIGWINCH
+
+export FZF_COLUMNS=$COLUMNS
+export FZF_LINES=$LINES
+# export FZF_PREVIEW_COLUMNS=$COLUMNS
+# export FZF_PREVIEW_LINES=$LINES
+
+# ------------------------------
 # in tray yet
