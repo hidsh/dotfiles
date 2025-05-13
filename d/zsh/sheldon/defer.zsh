@@ -137,6 +137,24 @@ bindkey -r "^[h"		# alt-h: run-help
 bindkey "^[h" backward-kill-word
 
 # ------------------------------
+# hooks
+# ------------------------------
+autoload -Uz add-zsh-hook
+
+# copy last command to clipboard
+hook-fn-last-command () {
+   echo -n $(fc -nl -1) | wl-copy 2>/dev/null
+}
+add-zsh-hook precmd hook-fn-last-command
+
+# copy last output to clipboard
+# This functionality is moved into `~/dotfiles/d/kitty/custom.conf` as below:
+# ```
+#   map kitty_mod+c launch --stdin-source=@last_cmd_output --type=clipboard
+# ```
+
+
+# ------------------------------
 # fzf
 # ------------------------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
