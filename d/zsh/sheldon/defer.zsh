@@ -59,6 +59,70 @@ Kill specified process via fzf"
     [[ ! "$?" -eq 0 ]] && echo 'Failed'
 }
 
+which- () {
+    local help="Usage: $0 PROGRAM-NAME
+Print the result of 'which' but also some info"
+
+    if [[ ! "$#" -eq 1 ]]; then
+        echo $help; return 1
+    fi
+
+    if [ "$1" = '--help' ]; then
+        echo $help; return 0
+    fi
+
+    if ! $(which $1 > /dev/null); then
+        echo "Not found: '$1'"; return 1
+    fi
+
+    local abs=$(which $1)
+    echo $(ls -la $abs)
+    echo
+    echo $(file -h $abs)
+}
+
+logout-hyprland () {
+    local help="Usage: $0
+Logout from current GUI session"
+
+    if [[ "$#" -eq 1 ]] && [ "$1" = '--help' ]; then
+        echo $help; return 0
+    elif [[ ! "$#" -eq 0 ]]; then
+        echo $help; return 1
+    fi
+
+    dep='hyprctl'
+    if ! $(which "$dep" > /dev/null); then
+        echo "Not found: '$dep', install it prior to using."; return 1
+    fi
+
+    local dep='pgrep'
+    if ! $(which "$dep" > /dev/null); then
+        echo "Not found: '$dep', install it prior to using."; return 1
+    fi
+
+    if ! $(pgrep -x "Hyprland" > /dev/null); then
+        echo "'Hyprland' is not running now. do nothing."; return 1
+    fi
+
+    # confirm
+    # refer: https://vorfee.hatenablog.jp/entry/2015/03/09/210450
+    local ans=''
+    read -k 1 ans'?Sure? (Y|n): '
+    if [ "$ans" != 'y' ] && [ "$ans" != 'Y' ] && [ "$ans" != '' ]; then
+        return 0
+    fi
+
+    # try to close all windows
+    # refer: https://www.reddit.com/r/hyprland/comments/12dhbuk/how_to_exitlogout_of_hyprland/?tl=ja
+    local hyprcmds=$(hyprctl -j clients | jq -j '.[] | "dispatch closewindow address:\(.address); "')
+    hyprctl --quiet --batch "$hyprcmds"
+
+    hyprctl dispatch exit
+}
+alias logout='logout-hyprland'
+alias logoff='logout-hyprland'
+
 # find- () {}
 # rg- () {rg $* 2>/dev/null}
 # ps- () {ps aux | rg $1}
