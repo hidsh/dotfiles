@@ -192,6 +192,8 @@ _m() {
 # ------------------------------
 # check by 'bindkey | less'
 
+bindkey -e
+
 # unbind shell keybindings
 bindkey -r "^[T"        # alt-T: transpose-words
 bindkey -r "^[t"        # alt-t: transpose-words
@@ -200,14 +202,21 @@ bindkey -r "^[h"		# alt-h: run-help
 # new bind
 bindkey "^[h" backward-kill-word
 
+
+bindkey '^j' history-search-forward
+bindkey '^n' history-search-forward
+bindkey '^k' history-search-backward
+bindkey '^p' history-search-backward
+
 # ------------------------------
 # hooks
 # ------------------------------
 autoload -Uz add-zsh-hook
 
-# copy last command to clipboard
+# copy last command to clipboard (Ctrl-Shift-v)
 hook-fn-last-command () {
-   echo -n $(fc -nl -1) | wl-copy 2>/dev/null
+   export lastcmd=$(fc -nl -1)
+   echo -n ${lastcmd} | wl-copy 2>/dev/null
 }
 add-zsh-hook precmd hook-fn-last-command
 
