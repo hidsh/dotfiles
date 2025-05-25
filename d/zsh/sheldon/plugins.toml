@@ -20,17 +20,19 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 
 [plugins.environment]
 github = 'zimfw/environment'
-apply = ["defer"]
+apply = ['defer']
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+# ---------------------------------------------
 
 [plugins.colors]
 inline = 'autoload -Uz colors && zsh-defer colors'
 
 [plugins.zsh-input]
-github = "zimfw/input"
-apply = ["defer"]
+github = 'zimfw/input'
+apply = ['defer']
 
 #[plugins.mise]
 #inline = 'eval "$(mise activate zsh)"'
@@ -41,83 +43,114 @@ apply = ["defer"]
 
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
-apply = ["defer"]
+apply = ['defer']
 hooks.pre = "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#AAA'"
 
 
 [plugins.zsh-completions]
-github = "zsh-users/zsh-completions"
-apply = ["defer"]
-hooks.post = """zstyle ':completion:*:(processes|jobs)' menu yes select=2
-				zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'"""		# わざわざ大文字を入力した時は小文字の候補を補完しない。でもやっぱり大文字の候補が見つからない場合には, 小文字の候補を補完する
+github = 'zsh-users/zsh-completions'
+apply = ['defer']
+hooks.post = """
+    zstyle ':completion:*:(processes|jobs)' menu yes select=2
+    # わざわざ大文字を入力した時は小文字の候補を補完しない
+    # でもやっぱり大文字の候補が見つからない場合には, 小文字の候補を補完する
+    zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+"""
 
 
 #[plugins.zsh-autocomplete]
 #github = 'marlonrichert/zsh-autocomplete'
-#apply = ["defer"]
+#apply = ['defer']
 #hooks.post """zstyle '*:compinit' arguments -D -i -u -C -w
 #			zstyle ':autocomplete:*' insert-unambiguous yes
 #			zstyle ':autocomplete:*' fzf-completion yes"""
 
-[plugins.zsh-dwim]
-github = "oknowton/zsh-dwim"
-apply = ["defer"]
+# [plugins.zsh-dwim]
+# github = 'oknowton/zsh-dwim'
+# apply = ['defer']
 
 #[plugins.zsh-z]
-#github = "rupa/z"
-#apply = ["defer"]
+#github = 'rupa/z'
+#apply = ['defer']
 
-[plugins.zsh-fzf]
+[plugins.fzf]
 github = 'zimfw/fzf'
-apply = ["defer"]
+apply = ['defer']
 # for keybindings such as Ctrl-t, Ctrl-r
-hooks.pre =	 """zsh-defer source ~/.fzf/shell/key-bindings.zsh
-                zsh-defer source ~/.fzf/shell/completion.zsh"""
+hooks.pre =	 """
+    zsh-defer source ~/.fzf/shell/key-bindings.zsh
+    zsh-defer source ~/.fzf/shell/completion.zsh
+"""
 
-#[plugins.zsh-fzf-tab]
-#github = 'Aloxaf/fzf-tab'
-#apply = ["defer"]
-#hooks.post = """# disable sort when completing `git checkout`
-#				zstyle ':completion:*:git-checkout:*' sort false
-				# set descriptions format to enable group support
-				# NOTE: don't use escape sequences here, fzf-tab will ignore them
-				#zstyle ':completion:*:descriptions' format '[%d]'
-				# set list-colors to enable filename colorizing
-#				zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-				# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-				#zstyle ':completion:*' menu no
-				# preview directory's content with eza when completing cd
-#				zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-				# switch group using `<` and `>`
-				#zstyle ':fzf-tab:*' switch-group '<' '>'"""
+[plugins.fzf-tab]
+github = 'Aloxaf/fzf-tab'
+apply = ['source']
+# hooks.post = """
+#               # disable sort when completing `git checkout`
+# 				zstyle ':completion:*:git-checkout:*' sort false
+# 				# set descriptions format to enable group support
+# 				# NOTE: don't use escape sequences here, fzf-tab will ignore them
+# 				#zstyle ':completion:*:descriptions' format '[%d]'
+# 				# set list-colors to enable filename colorizing
+# 				zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# 				# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+# 				#zstyle ':completion:*' menu no
+# 				# preview directory's content with eza when completing cd
+# 				zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# 				# switch group using `<` and `>`
+# 				#zstyle ':fzf-tab:*' switch-group '<' '>'
+# """
 
-#-----------------
+[plugins.fzf-tab-config]
+local = '~/dotfiles/d/zsh/sheldon'
+use = ['fzf-tab-config.zsh']
+apply = ['source']
+hooks.pre = """
+    # Enable caching for better completion performance
+    zstyle ':completion:*' use-cache on
+    zstyle ':completion:*' cache-path '$HOME/.zcompcache'
+"""
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
-hooks.post = """ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-				typeset -A ZSH_HIGHLIGHT_STYLES
-				ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'"""
+hooks.post = """
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+    typeset -A ZSH_HIGHLIGHT_STYLES
+    ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
+    # fzf-tab also accepts current selection via tab key
+    zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+"""
 
 
 #[plugins.zsh-history-substring-search]
 #github = 'zsh-users/zsh-history-substring-search'
-#apply = ["defer"]
+#apply = ['defer']
 #hooks.post = """bindkey '^K' history-substring-search-up
 #			bindkey '^J' history-substring-search-down
 #			HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1"""
 
-[plugins.wezterm]
-#local = '/etc/profile.d'
-local = '~/dotfiles/d/zsh'
-use = ['wezterm.sh']
-apply = ['source']
+# [plugins.wezterm]
+# #local = '/etc/profile.d'
+# local = '~/dotfiles/d/zsh'
+# use = ['wezterm.sh']
+# apply = ['source']
+
+# [plugins.zsh-abbr]
+# github = "olets/zsh-abbr"
+# apply = ['defer']
+# hooks.pre = """
+# ABBR_SET_EXPANSION_CURSOR=1
+# ABBR_SET_LINE_CURSOR=1
+# ABBR_EXPANSION_CURSOR_MARKER=+
+# """
 
 [plugins.zoxide-init]
 local = '~/dotfiles/d/zsh/sheldon'
 use = ['zoxide-init.zsh']
 apply = ['defer']
 hooks.post = 'eval "$(zoxide init --cmd cd zsh)"'
+
+# ---------------------------------------------
 
 [plugins.dotfiles-sync]
 local = '~/dotfiles/d/zsh/sheldon'
