@@ -41,13 +41,6 @@ if [[ -t 0 ]]; then
 	stty start undef
 fi
 
-# M-h(Alt-h) <- backward-kill-word(C-w)
-# stty werase undef
-# bindkey '"\eh": backward-kill-word'
-
-bindkey '^j' history-search-forward
-bindkey '^k' history-search-backward
-
 ####################################################
 # zshell options
 setopt EXTENDED_HISTORY     # 開始と終了を記録
@@ -138,7 +131,7 @@ export TIME_STYLE=long-iso				# yyyy-mm-dd
 #export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/vsh:$PATH             # v scripts
-#export PATH=~/.cargo/bin:$PATH			# rust tools
+export PATH=~/.cargo/bin:$PATH			# rust tools
 export PATH=~/.fzf/bin:$PATH			# fzf
 export PATH="$PATH:/opt/nvim-linux64/bin"	# nvim
 
@@ -235,9 +228,10 @@ alias ll="ls -lGh"
 alias less=bat
 alias file='file -h'					# not follow symlink
 alias dd='dd status=progress'
+alias du='du -sh '
 alias dmesg-tail='sudo dmesg -W --time-format iso'
 alias xcd='cd "$(xplr --print-pwd-as-result)"'
-alias pbcopy='xsel --clipboard --input'
+# alias pbcopy='xsel --clipboard --input'
 alias no-color='sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"'
 alias no-err='noglob command 2>/dev/null'
 alias clip='no-color | wl-copy'
@@ -246,6 +240,8 @@ alias lsblk='lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINTS'
 #alias ll='yazi'
 alias rg='rg --hidden --no-heading'
 alias ff='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+# alias sed--="sed -i -e 's///g' *.x"
+alias lsusb=cyme
 
 alias tree='tree -I "*.pyc|__pycache__|*~"'
 
@@ -294,10 +290,10 @@ eval $(dircolors -b ~/dotfiles/d/dot.dircolors)
 
 # esp-idf
 # Need '. $HOME/esp/esp-idf/export.sh' after new shell
-alias idf='$HOME/esp/esp-idf/tools/idf.py'
+# alias idf='$HOME/esp/esp-idf/tools/idf.py'
 
 # qmk
-alias qq='qmk compile'
-alias qqq='qmk clean; qmk compile'
-alias qc='qmk clean'
-alias qf='qmk flash'
+# alias qq='qmk compile'
+# alias qqq='qmk clean; qmk compile'
+# alias qc='qmk clean'
+# alias qf='qmk flash'

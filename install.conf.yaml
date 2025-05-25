@@ -32,11 +32,12 @@
     ~/.bashrc:                        d/bash/bashrc
     ~/.zshenv:                        d/zsh/zshenv
     ~/.config/zsh/.zshrc:             d/zsh/zshrc
-    ~/.config/starship.toml:          d/zsh/starship.toml
+    # ~/.config/starship.toml:          d/zsh/starship.toml
     ~/.config/sheldon/plugins.toml:   d/zsh/sheldon/plugins.toml
     ~/.config/sheldon/defer.zsh:      d/zsh/sheldon/defer.zsh
     ~/.config/sheldon/sync.zsh:       d/zsh/sheldon/sync.zsh
     ~/.config/fuzzel/fuzzel.ini:      d/fuzzel.ini
+    ~/.config/bat/config:             d/bat/config
     ~/.fdignore:                      d/zsh/dot.fdignore
     ~/.local/bin/xplr-hack.lua:       d/zsh/xplr-hack.lua
     ~/.local/bin/imv-open.sh:         d/zsh/imv-open.sh
@@ -51,6 +52,7 @@
     ~/.local/share/applications/my-sleep.desktop:       d/dot.desktop/my-sleep.desktop
     ~/.local/share/applications/my-logoff.desktop:      d/dot.desktop/my-logoff.desktop
     ~/.local/share/applications/icon-viewer.desktop:    d/dot.desktop/icon-viewer.desktop
+    ~/.local/share/applications/img.desktop:            d/dot.desktop/img.desktop
 
     ~/.local/bin/ping-scan.sh:                          d/my-bin/ping-scan.sh  
     ~/.local/bin/pywal-colors:                          d/my-bin/pywal-colors
