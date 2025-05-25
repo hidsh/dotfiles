@@ -144,7 +144,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"	# nvim
 # editor
 export EDITOR=nvim
 export VISUAL=$EDITOR
-export PAGER=less						# for git
+export PAGER=bat						# for git
 
 #alias vim=$EDITOR                      # better than alias, `sudo ln -s /usr/bin/nvim /usr/bin/vim` for `sudo`
 
@@ -226,12 +226,12 @@ alias t=translate
 #alias y=
 #alias z=
 
-#unalias ls
 #alias ll="ls -FlGh --time-style='+%Y-%m-%d %H:%M:%S' | sed -E '2,$s/ +[0-9]+//'"
 #alias ll="ls -lGh --color --time-style='+%Y-%m-%d %H:%M:%S'"
 alias ls="ls -F --color"
 alias ll="ls -lGh"
 
+alias less=bat
 alias file='file -h'					# not follow symlink
 alias dd='dd status=progress'
 alias dmesg-tail='sudo dmesg -W --time-format iso'
@@ -246,12 +246,14 @@ alias lsblk='lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINTS'
 alias rg='rg --hidden --no-heading'
 alias ff='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
-# tree
-if [ -f $(which eza) ]; then
-    alias tree='eza -TaF --git-ignore'
-else
-    alias tree='tree -I "*.pyc|__pycache__|*~" --charset=C -A $PWD'
-fi
+alias tree='tree -I "*.pyc|__pycache__|*~"'
+
+# # tree
+# if [ -f $(which eza) ]; then
+#     alias tree='eza -TaF --git-ignore'
+# else
+#    alias tree='tree -I "*.pyc|__pycache__|*~" --charset=C -A $PWD'
+# fi
 
 case $PC in
 ### Mac
