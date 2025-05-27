@@ -54,7 +54,7 @@
             "style": "full"
           },
           "trailing_diamond": "\ue0b4",
-          "template": " \udb80\ude56 {{ path .Path .Location }}",
+          "template": " {{ .PWD }}",
           "foreground": "#282a36",
           "background": "#cccccc",
           "type": "path",
