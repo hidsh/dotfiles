@@ -1,3 +1,6 @@
-#echo 40-zshrc
+#
+# zshrc.sheldon
+#
+
 eval "$(sheldon source)"
 eval "$(~/.local/bin/mise activate zsh)"

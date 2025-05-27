@@ -297,3 +297,8 @@ eval $(dircolors -b ~/dotfiles/d/dot.dircolors)
 # alias qqq='qmk clean; qmk compile'
 # alias qc='qmk clean'
 # alias qf='qmk flash'
+
+# ------------------------------
+# prompt (oh-my-posh)
+# ------------------------------
+eval "$(oh-my-posh init zsh --config $HOME/dotfiles/d/oh-my-posh/EDM115-newline.omp.json)"

@@ -18,7 +18,7 @@
 - clean: ['~']
 
 - link:
-    # TARGET LINK:      FILE ENTITY
+    # TARGET LINK:                    FILE ENTITY
     ~/.config/hypr/conf/keybindings/default.conf:   d/hypr/keybindings-default.conf
     ~/.config/hypr/custom.conf:       d/hypr/custom.conf
     ~/.config/kitty/custom.conf:      d/kitty/custom.conf
@@ -31,7 +31,7 @@
     #    ~/.vim/autoload:                  d/vim/autoload
     ~/.bashrc:                        d/bash/bashrc
     ~/.zshenv:                        d/zsh/zshenv
-    ~/.config/zsh/.zshrc:             d/zsh/zshrc
+    ~/.config/zsh/.zshrc:             d/zsh/zshrc.sheldon
     # ~/.config/starship.toml:          d/zsh/starship.toml
     ~/.config/sheldon/plugins.toml:   d/zsh/sheldon/plugins.toml
     ~/.config/sheldon/defer.zsh:      d/zsh/sheldon/defer.zsh
