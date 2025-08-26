@@ -1,0 +1,13 @@
+# yazi config
+
+[manager]
+wrap = 'no'
+tab_size = 2
+
+[opener]
+# play=[]
+# edit=[]
+
+open=[
+    { run = 'imv -f "$@"', desc = 'Open'},
+]

@@ -1,0 +1,34 @@
+# yazi config
+
+[mgr]
+wrap = 'no'
+tab_size = 2
+
+[opener]
+# play=[]
+
+edit =[
+  { run = "emacsclient -n -- \"$@\"", desc = "Edit with Emacs" }  
+]
+
+# vscodium_md = [
+#   { run = "vscodium \"$@\" &", desc = "vscodium (Markdown)", block = false, for = "unix", match = "*.md" }
+# ]
+
+open_imv=[
+  { run = 'imv "$@"', desc = 'Open'},
+#  { run = 'imv -f "$@"', desc = 'Open'},   # full screen
+]
+
+system_default = [
+  { run = "xdg-open \"$1\"", desc = "System Default", for = "linux" }
+]
+
+[open]
+rules = [
+  { mime = "text/*", use = "edit" },
+  { mime = "application/pdf", use = "system_default" },
+  { mime = 'image/*', use = ['open_imv', 'system_default'] },
+  { mime = "{audio,video}/*", use = [ "system_default" ] },
+  { name = '*', use = 'system_default' }
+]

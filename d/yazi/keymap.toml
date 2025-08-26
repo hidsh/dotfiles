@@ -1,0 +1,70 @@
+# yazi keymap
+
+# --------------------
+# plugins
+# --------------------
+# awesome-yazi:     https://github.com/AnirudhG07/awesome-yazi/blob/main/README.md
+
+# smart-enter.yazi  https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+# toggle-pane.yazi  https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
+[[mgr.prepend_keymap]]
+on   = "i"
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "I"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
+
+# ya pack -a orhnk/system-clipboard
+[[mgr.prepend_keymap]]
+on = "<C-y>"
+run = "plugin system-clipboard"
+
+# ya pkg add yazi-rs/plugins:jump-to-char
+[[mgr.prepend_keymap]]
+on   = "f"
+run  = "plugin jump-to-char"
+desc = "Jump to char"
+
+# ya pkg add yazi-rs/plugins:smart-filter 
+[[mgr.prepend_keymap]]
+on   = "8"
+run  = "plugin smart-filter"
+desc = "Smart filter"
+
+
+# --------------------
+# my customizations
+# --------------------
+[[mgr.prepend_keymap]]
+on  = ";"
+run = "noop"
+desc = "unbindings"
+
+[mgr]
+append_keymap = [
+	{ on = "!", run = "shell --interactive", desc = "Run a shell command" },
+    { on = [ 'g', 't' ], run = 'cd ~/.Trash', desc = 'Go ~/.Trash' },
+    { on = [ 'g', '-' ], run = 'cd -', desc = 'Go back' },  # doesn't work
+]
+
+#[open]
+#prepend_rules = [
+#    { mime = "application/pdf", use = [ "system_default" ] },
+#    { mime = "image/*", use = [ "system_default" ] },
+#    { mime = "{audio,video}/*", use = [ "system_default" ] },
+
+#	{ name = "*.json", use = "edit" },
+#	{ name = "*", use = [ "open", "edit" ] },
+
+#   { name = "*", use = [ "system_default" ] },
+#]
+
+

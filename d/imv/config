@@ -1,0 +1,19 @@
+# imv config
+
+[binds]
+<Escape> = quit
+<0> = reset
+# <0> = zoom actual
+<equal> = zoom 5
+<minus> = zoom -5
+u = zoom -5
+i = zoom 5
+
+<Down> = pan 0 -50
+<Up> = pan 0 50
+<Left> = pan 50 0
+<Right> = pan -50 0
+j = pan 0 -50
+k = pan 0 50
+h = pan 50 0
+l = pan -50 0

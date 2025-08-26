@@ -1,0 +1,27 @@
+set default-fg "#CCBBCC"
+set default-bg "#333333"
+set selection-clipboard clipboard
+set advance-pages-per-row true
+set first-page-column 1
+set zoom-step 20
+set zoom-min  80
+
+# keybindings 
+# https://pwmt.org/projects/zathura/documentation/#:~:text=include%20another%2Dconfig,one%20of%20the%20following%20values:
+
+unmap <C-r>
+
+# map [mode] <binding> <function> [arguments] 
+map m navigate next
+map M navigate previous
+map = zoom in
+map i zoom in
+map o zoom out
+map u zoom out
+map 0 adjust_window width
+map ) adjust_window best-fit
+map gh jumplist backward
+map gl jumplist forward
+#map f toggle_fullscreen
+#map <C-o> open
+

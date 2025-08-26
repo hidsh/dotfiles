@@ -1,0 +1,45 @@
+# yazi keymap
+
+# --------------------
+# plugins
+# --------------------
+# awesome-yazi:     https://github.com/AnirudhG07/awesome-yazi/blob/main/README.md
+
+# smart-enter.yazi  https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
+[[manager.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+# toggle-pane.yazi  https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
+[[manager.prepend_keymap]]
+on   = "i"
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
+
+[[manager.prepend_keymap]]
+on   = "I"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
+
+# ya pack -a orhnk/system-clipboard
+[[manager.prepend_keymap]]
+on = "<C-y>"
+run = "plugin system-clipboard"
+
+
+# --------------------
+# my customizations
+# --------------------
+[[manager.prepend_keymap]]
+on  = ";"
+run = "noop"
+desc = "unbindings"
+
+[manager]
+append_keymap = [
+	{ on = "!", run = "shell --interactive", desc = "Run a shell command" },
+    { on = [ 'g', 't' ], run = 'cd ~/.Trash', desc = 'Go ~/.Trash' },
+    { on = [ 'g', '-' ], run = 'cd -', desc = 'Go back' },  # doesn't work
+
+]

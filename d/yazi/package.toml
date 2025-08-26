@@ -1,0 +1,27 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "55bf699"
+hash = "7918aab6a71caf31b58411f789195677"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "55bf699"
+hash = "f3853bbdd1da2fad09d059ab5464abfd"
+
+[[plugin.deps]]
+use = "orhnk/system-clipboard"
+rev = "efb8f03"
+hash = "9b8f2573da54334b04747e51556040cc"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:jump-to-char"
+rev = "d7588f6"
+hash = "d2f04875bbd4ed3dd5696e8c4b094fde"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "d7588f6"
+hash = "e56b7abf3c06e8ce496eadcca168c093"
+
+[flavor]
+deps = []
