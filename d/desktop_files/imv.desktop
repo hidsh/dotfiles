@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=imv
+GenericName=Image Viewer
+Exec=/usr/bin/imv
+Comment=Image viewer for X11 and Wayland
+Terminal=false
+MimeType=x-scheme-handler/img

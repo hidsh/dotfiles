@@ -1,0 +1,10 @@
+[Desktop Entry]
+# Created by desktopfilecreator.com
+Type=Application
+Version=1.0
+Name=Zathura PDF Viewer
+Comment=Created by desktopfilecreator.com
+Path=~/Downloads
+Exec=/bin/zathura
+Terminal=false
+

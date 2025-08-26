@@ -1,0 +1,16 @@
+[MIME Cache]
+application/x-shellscript=goneovim.desktop;
+text/english=goneovim.desktop;
+text/plain=goneovim.desktop;
+text/x-c=goneovim.desktop;
+text/x-c++=goneovim.desktop;
+text/x-c++hdr=goneovim.desktop;
+text/x-c++src=goneovim.desktop;
+text/x-chdr=goneovim.desktop;
+text/x-csrc=goneovim.desktop;
+text/x-java=goneovim.desktop;
+text/x-makefile=goneovim.desktop;
+text/x-moc=goneovim.desktop;
+text/x-pascal=goneovim.desktop;
+text/x-tcl=goneovim.desktop;
+text/x-tex=goneovim.desktop;

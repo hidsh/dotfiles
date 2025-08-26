@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/usr/bin/zathura
+MimeType=application/pdf;
+Name=zathura
+NoDisplay=true
+Type=Application

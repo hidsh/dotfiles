@@ -23,6 +23,9 @@
     ~/.config/hypr/custom.conf:       d/hypr/custom.conf
     ~/.config/kitty/custom.conf:      d/kitty/custom.conf
     ~/.config/kitty/keymap.py:        d/kitty/keymap.py
+    ~/.config/yazi:                   d/yazi
+    ~/.config/imv:                    d/imv
+    ~/.config/zathura:                d/zathura
     ~/vsh:                            d/vsh           # v scripts
     # ~/.wezterm.lua:                   d/wezterm.lua
     ~/.lesskey:                       d/dot.lesskey
@@ -42,17 +45,19 @@
     ~/.local/bin/xplr-hack.lua:       d/zsh/xplr-hack.lua
     ~/.local/bin/imv-open.sh:         d/zsh/imv-open.sh
     ~/.local/bin/preview.sh:          d/zsh/skim/preview.sh
-    #~/.Xmodmap:                                         d/xmodmap/dot.xmodmap
+    # ~/.Xmodmap:                                         d/xmodmap/dot.xmodmap
     # ~/.config/autostart/xmodmap.desktop:                d/xmodmap/xmodmap-at-startup.desktop
     # ~/.local/bin/xmodmap-apply.sh:                      d/xmodmap/xmodmap-apply.sh
     # ~/.local/share/applications/xmodmap-apply.desktop:  d/xmodmap/xmodmap-apply.desktop
-    ~/.local/share/applications/my-reboot.desktop:      d/dot.desktop/my-reboot.desktop
-    ~/.local/share/applications/my-shutdown.desktop:    d/dot.desktop/my-shutdown.desktop
-    ~/.local/share/applications/my-suspend.desktop:     d/dot.desktop/my-suspend.desktop
-    ~/.local/share/applications/my-sleep.desktop:       d/dot.desktop/my-sleep.desktop
-    ~/.local/share/applications/my-logoff.desktop:      d/dot.desktop/my-logoff.desktop
-    ~/.local/share/applications/icon-viewer.desktop:    d/dot.desktop/icon-viewer.desktop
-    ~/.local/share/applications/img.desktop:            d/dot.desktop/img.desktop
+
+    ~/.local/share/applications:      d/desktop_files
+    # ~/.local/share/applications/my-reboot.desktop:      d/dot.desktop/my-reboot.desktop
+    # ~/.local/share/applications/my-shutdown.desktop:    d/dot.desktop/my-shutdown.desktop
+    # ~/.local/share/applications/my-suspend.desktop:     d/dot.desktop/my-suspend.desktop
+    # ~/.local/share/applications/my-sleep.desktop:       d/dot.desktop/my-sleep.desktop
+    # ~/.local/share/applications/my-logoff.desktop:      d/dot.desktop/my-logoff.desktop
+    # ~/.local/share/applications/icon-viewer.desktop:    d/dot.desktop/icon-viewer.desktop
+    # ~/.local/share/applications/img.desktop:            d/dot.desktop/img.desktop
 
     ~/.local/bin/ping-scan.sh:                          d/my-bin/ping-scan.sh  
     ~/.local/bin/pywal-colors:                          d/my-bin/pywal-colors
