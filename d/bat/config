@@ -1,3 +1,4 @@
 --paging=auto
+--pager='less -FR'
 --style=plain
 
