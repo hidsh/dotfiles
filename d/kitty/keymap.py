@@ -13,7 +13,7 @@ from kitty import fast_data_types
 from kitty.boss import Boss
 from kitty.options.types import Options as KittyOpts
 from kitty.options.utils import KeyMap, KeyboardMode, KeyDefinition
-from kitty.tab_bar import Formatter as fmt
+# from kitty.tab_bar import Formatter as fmt
 from kitty.types import Shortcut, mod_to_names
 
 # List of categories and regular expressions to match actions on
@@ -64,11 +64,13 @@ def handle_result(args: list[str], answer: str, target_window_id: int, boss: Bos
         # group shortcuts with the same actions together.
         for key, action in key_mappings.items():
             key_repr: ShortcutRepr = key.human_repr(kitty_mod=opts.kitty_mod)
-            key_repr = f"{key_repr:<18} {fmt.fg.red}→{fmt.fg.default}"
+            # key_repr = f"{key_repr:<18} {fmt.fg.red}→{fmt.fg.default}"
+            key_repr = f"{key_repr:<23} →"
             if match := re.search(r"^push_keyboard_mode (\w+)$", action):
                 # bold the mode name if found
                 action_fmt = (
-                    f"push_keyboard_mode {fmt.bold}{match.group(1)}{fmt.nobold}"
+                    # f"push_keyboard_mode {fmt.bold}{match.group(1)}{fmt.nobold}"
+                    f"push_keyboard_mode {match.group(1)}"
                 )
                 key_repr = f"{key_repr} {action_fmt}"
             else:
@@ -95,13 +97,15 @@ def handle_result(args: list[str], answer: str, target_window_id: int, boss: Bos
         "Kitty keyboard mappings",
         "=======================",
         "",
-        "My kitty_mod is {}.".format("+".join(mod_to_names(opts.kitty_mod))),
+        # "My kitty_mod is {}.".format("+".join(mod_to_names(opts.kitty_mod))),
+        "My kitty_mod is {}.".format(" + ".join(mod_to_names(opts.kitty_mod))),
         "",
     ]
     for category in categories:
         if category not in output_categorized:
             continue
-        output.extend([f"{fmt.bold}{category}{fmt.nobold}", "=" * len(category), ""])
+        # output.extend([f"{fmt.bold}{category}{fmt.nobold}", "=" * len(category), ""])
+        output.extend([f"{category}", "=" * len(category), ""])
         output.extend(sum(output_categorized[category].values(), []))
         output.append("")
 
