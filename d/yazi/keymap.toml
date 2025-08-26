@@ -41,7 +41,10 @@ desc = "Smart filter"
 
 
 # --------------------
-# my customizations
+# my keybindings
+# 
+# default keybinindgs:
+#   https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap-default.toml
 # --------------------
 [[mgr.prepend_keymap]]
 on  = ";"
@@ -50,21 +53,16 @@ desc = "unbindings"
 
 [mgr]
 append_keymap = [
-	{ on = "!", run = "shell --interactive", desc = "Run a shell command" },
+	{ on = '!', run = 'shell --interactive', desc = 'Run a shell command' },
+	{ on = 'b', run = 'shell "less \"$1\"" --block', desc = 'View by less' },
+
+    { on = [ 'g', 'd' ], run = 'cd ~/Downloads', desc = 'Go ~/Downloads' },
     { on = [ 'g', 't' ], run = 'cd ~/.Trash', desc = 'Go ~/.Trash' },
-    { on = [ 'g', '-' ], run = 'cd -', desc = 'Go back' },  # doesn't work
+    { on = [ 'g', '-' ], run = 'back', desc = 'Back to previous folder' },
+
+    { on = '<C-j>', run = 'seek 1', desc= 'Scroll preview down'},
+    { on = '<C-k>', run = 'seek -1', desc= 'Scroll preview up' },
+    { on = '<C-n>', run = 'seek 5', desc= 'Scroll preview down by 5' },
+    { on = '<C-p>', run = 'seek -5', desc= 'Scroll preview up by 5' },
 ]
-
-#[open]
-#prepend_rules = [
-#    { mime = "application/pdf", use = [ "system_default" ] },
-#    { mime = "image/*", use = [ "system_default" ] },
-#    { mime = "{audio,video}/*", use = [ "system_default" ] },
-
-#	{ name = "*.json", use = "edit" },
-#	{ name = "*", use = [ "open", "edit" ] },
-
-#   { name = "*", use = [ "system_default" ] },
-#]
-
 

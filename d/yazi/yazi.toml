@@ -8,14 +8,14 @@ tab_size = 2
 # play=[]
 
 edit =[
-  { run = "emacsclient -n -- \"$@\"", desc = "Edit with Emacs" }  
+  { run = 'emacsclient -n -- "$@"', desc = "Edit with Emacs" }  
 ]
 
 # vscodium_md = [
 #   { run = "vscodium \"$@\" &", desc = "vscodium (Markdown)", block = false, for = "unix", match = "*.md" }
 # ]
 
-open_imv=[
+open_imv = [
   { run = 'imv "$@"', desc = 'Open'},
 #  { run = 'imv -f "$@"', desc = 'Open'},   # full screen
 ]
@@ -30,5 +30,5 @@ rules = [
   { mime = "application/pdf", use = "system_default" },
   { mime = 'image/*', use = ['open_imv', 'system_default'] },
   { mime = "{audio,video}/*", use = [ "system_default" ] },
-  { name = '*', use = 'system_default' }
+  { name = '*', use = 'system_default' }            # fallback
 ]
