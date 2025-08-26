@@ -78,12 +78,12 @@ map('n', 'tt', ':lua vim.o.wrap = not vim.o.wrap<CR>', opts)
 ------------------------
 -- for kitty scrollbuffer w/ nvim
 ------------------------
--- map({'n', 'i', 'v' }, 'q', ':q!<enter>', opts)
--- map('n', 'i', '', opts)
--- map('n', 'a', '', opts)
--- map('n', 'A', '', opts)
--- map('n', '<C-h>', '', opts)
--- map('n', '<C-S-h>', '', opts)
+map({'n', 'i', 'v' }, 'q', ':q!<enter>', opts)
+map('n', 'i', '', opts)
+map('n', 'a', '', opts)
+map('n', 'A', '', opts)
+map('n', '<C-h>', '', opts)
+map('n', '<C-S-h>', '', opts)
 
 -----------------
 -- other setting
