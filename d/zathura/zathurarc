@@ -22,6 +22,7 @@ map 0 adjust_window width
 map ) adjust_window best-fit
 map gh jumplist backward
 map gl jumplist forward
-#map f toggle_fullscreen
-#map <C-o> open
+map f toggle_fullscreen
+# map <C-o> open
+# map [fullscreen] f abort      # doesn't work
 
