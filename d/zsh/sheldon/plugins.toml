@@ -82,9 +82,9 @@ hooks.pre =	 """
     zsh-defer source ~/.fzf/shell/completion.zsh
 """
 
-[plugins.fzf-tab]
-github = 'Aloxaf/fzf-tab'
-apply = ['source']
+# [plugins.fzf-tab]
+# github = 'Aloxaf/fzf-tab'
+# apply = ['source']
 # hooks.post = """
 #               # disable sort when completing `git checkout`
 # 				zstyle ':completion:*:git-checkout:*' sort false
@@ -101,15 +101,27 @@ apply = ['source']
 # 				#zstyle ':fzf-tab:*' switch-group '<' '>'
 # """
 
-[plugins.fzf-tab-config]
-local = '~/dotfiles/d/zsh/sheldon'
-use = ['fzf-tab-config.zsh']
-apply = ['source']
-hooks.pre = """
-    # Enable caching for better completion performance
-    zstyle ':completion:*' use-cache on
-    zstyle ':completion:*' cache-path '$HOME/.zcompcache'
-"""
+# [plugins.fzf-tab-config]
+# local = '~/dotfiles/d/zsh/sheldon'
+# use = ['fzf-tab-config.zsh']
+# apply = ['source']
+# hooks.pre = """
+#     # Enable caching for better completion performance
+#     zstyle ':completion:*' use-cache on
+#     zstyle ':completion:*' cache-path '$HOME/.zcompcache'
+# """
+
+# [plugins.filter-ctr-r--fzf-history-widget]
+# local = '~/dotfiles/d/zsh'
+# # use = ['patch--filter-ctr-r--fzf-history-widget.zsh']
+# apply = ['defer']
+# hooks.pre = """
+# """
+# hooks.post = """
+#   which fzf-history-widget
+#   source ~/dotfiles/d/zsh/patch--filter-ctr-r--fzf-history-widget.zsh \
+#     || echo '[fzf-patch] warning: using unpatched fzf-history-widget'
+# """
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
@@ -143,6 +155,10 @@ hooks.post = """
 # ABBR_SET_LINE_CURSOR=1
 # ABBR_EXPANSION_CURSOR_MARKER=+
 # """
+
+[plugins.zhooks]
+github = 'agkozak/zhooks'
+apply = ['source']
 
 [plugins.zoxide-init]
 local = '~/dotfiles/d/zsh/sheldon'

@@ -2,7 +2,18 @@
 # zsh/sheldon/defer.sh
 #
 
-#echo zsh/sheldon/defer.sh
+#echo zsh/sheldon/defer.sh  # for degug
+
+# # ------------------------------
+# # abbr
+# # ------------------------------
+# ABBR_SET_EXPANSION_CURSOR=1
+# ABBR_SET_LINE_CURSOR=1
+
+# # abbr systemctl-service='systemctl list-unit-files -t service | grep % | less'
+# abbr sed--="sed -i -e 's/%/%/g' *.%"
+# abbr tr--="echo $PATH | tr ':' '\n'"
+
 # ------------------------------
 # functions
 # ------------------------------
@@ -128,8 +139,13 @@ alias logoff='logout-hyprland'
 # ps- () {ps aux | rg $1}
 
 # add to command history for completion
-print -s "sed -i -e 's///g' *.x"
-print -s "echo $PATH | tr ':' '\n'"
+# print -s "sed -i -e 's///g' *.x"
+# print -s "echo $PATH | tr ':' '\n'"
+
+# my-cheat () {
+#     print -z -- $(echo $ch|fzf)
+# }
+alias my-cheat='print -z -- $(echo $ch|fzf)'
 
 #compdef _sed_comp sed
 #function _sed_comp {
@@ -187,7 +203,11 @@ _m() {
 #	fi
 }
 
-####################################################
+function cp- {
+
+}
+
+# ------------------------------
 # keybindings
 # ------------------------------
 # check by 'bindkey | less'
@@ -234,7 +254,7 @@ add-zsh-hook precmd hook-fn-last-command
 
 export FZF_COMPLETION_TRIGGER=',,'	# ,,<TAB>でfzfに入る
 FZF_THEME_DRACURA_MOD='--color=dark,fg:-1,bg:-1,hl:#ff87d7,fg+:#d6ffe0,bg+:-1,hl+:#5fff87,info:#af87ff,prompt:#ff87d7,pointer:#5fff87,marker:#ff87d7,spinner:#ff87d7 '
-export FZF_DEFAULT_OPTS=$FZF_THEME_DRACURA_MOD'--height 40% --reverse --header-lines=0 --border=none --no-separator --no-info --no-scrollbar'
+export FZF_DEFAULT_OPTS=$FZF_THEME_DRACURA_MOD'--height 40% --reverse --header-lines=0 --border=none --no-separator --no-info --no-scrollbar --bind change:top'
 #export FZF_CTRL_T_OPTS='--height 100% --preview="[[ $(file --mime {}) =~ binary ]] && \
 #                 echo {} is a binary file || \
 #                 (highlight -O ansi -l {} || \
@@ -292,6 +312,9 @@ fv() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
   zsh
 }
+
+# hide `cd RELATIVE PATH` in fzf candidates
+export ZSH_FZF_HISTORY_COMMAND=$'fc -rl 1 | grep -vE "^[[:space:]]*[0-9]+[[:space:]]+cd[[:space:]]+(\\.{1,2}(/|$)|\\.[^/~$`(]|[^/~$`(])"'
 
 #export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
 
@@ -371,6 +394,9 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# broot (br)
+# source /home/g/.config/broot/launcher/bash/br
 
 # ------------------------------
 # dev-env

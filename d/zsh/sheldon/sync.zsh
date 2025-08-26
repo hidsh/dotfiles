@@ -188,7 +188,7 @@ esac
 
 
 ####################################################
-# alias
+# aliases
 # (to invoke original command, use "\command")
 
 # single shot activators
@@ -206,7 +206,8 @@ alias b=btm
 alias l=ls -la
 alias m=batman
 #alias n=nvim
-alias o=xdg-open
+#alias o=xdg-open
+#alias o="handlr open $1"
 #alias p=
 alias path='echo $PATH | tr ":" "\n"'
 #alias q=
@@ -225,6 +226,7 @@ alias t=translate
 alias ls="ls -F --color"
 alias ll="ls -lGh"
 
+alias tail-f-less='\less -S +F'         # use for monitor logs with long lines rather than `tail -f`
 alias less=bat
 alias file='file -h'					# not follow symlink
 alias dd='dd status=progress'
@@ -239,11 +241,14 @@ alias zz='zi'
 alias lsblk='lsblk -o NAME,FSTYPE,LABEL,MOUNTPOINTS'
 #alias ll='yazi'
 alias rg='rg --hidden --no-heading'
+alias rg-2='rg --no-ignore --hidden --no-heading'
+alias rg-all='rg --no-ignore -a --no-mmap --no-config --hidden --no-heading'
 alias ff='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 # alias sed--="sed -i -e 's///g' *.x"
 alias lsusb=cyme
 
 alias tree='tree -I "*.pyc|__pycache__|*~"'
+# alias log-to='script ~/downloads/log'
 
 # # tree
 # if [ -f $(which eza) ]; then
