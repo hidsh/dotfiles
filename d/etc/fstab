@@ -1,0 +1,12 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sda2
+UUID=7d4b81ab-038e-4b11-aa91-e2f828dab303	/         	ext4      	rw,relatime	0 1
+
+# /dev/sda1
+UUID=37F5-81BC      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+#/dev/nvme0n1p1: LABEL="my_data" UUID="4c8c8b7f-7667-4b60-b9b8-e22d7952e107" UUID_SUB="5aa64ec0-4380-4197-bc84-7bcf0a50d3be" BLOCK_SIZE="4096" TYPE="btrfs" PARTLABEL="home" PARTUUID="224dc684-8ba0-433e-a93e-0a41585e607a"
+UUID=4c8c8b7f-7667-4b60-b9b8-e22d7952e107    /home    btrfs    subvol=home,noatime,x-systemd.automount,x-systemd.device-timeout=10,x-systemd.idle-timeout=1min 0 2
