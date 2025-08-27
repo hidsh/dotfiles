@@ -123,7 +123,8 @@
   // ChatGPT Launcher
   "custom/chatgpt": {
     "format": " ",
-    "on-click": "~/.config/ml4w/settings/ai.sh",
+    // "on-click": "~/.config/ml4w/settings/ai.sh",
+    "on-click": "~/.config/waybar/ai.sh",
     "tooltip-format": "AI Support"
   },
 
