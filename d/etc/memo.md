@@ -1,0 +1,1 @@
+- [en_USで頑張るArch Linux日記 6日目：ssh中のシャットダウン禁止、自動ログイン, 画面ロック無効化, サスペンド](https://zenn.dev/articles/257b469d1e5f47)
