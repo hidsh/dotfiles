@@ -1,0 +1,16 @@
+# /etc/udev/rules.d/99-udisks2.rules
+#
+# change mount point: /run/media/USER-NAME/ --> /media/
+#
+# INSTALL AS BELOW:
+#   sudo cp ~/dotfiles/d/udiskie/99-udisks2.rules /etc/udev/rules.d/
+#
+# CAUTION:
+#   Don't use `ln` instead of `cp` for the command above, otherwise will **not** start linux next boot!
+#   Because /home dir will not be still mounted at the time.
+#
+# REFER TO:
+#   https://github.com/coldfix/udiskie/wiki/Custom-mount-paths
+#
+
+ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{UDISKS_FILESYSTEM_SHARED}="1"
