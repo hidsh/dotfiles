@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+#
+#
+
+hyprctl dispatch exit
