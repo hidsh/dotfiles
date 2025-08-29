@@ -203,6 +203,11 @@ _m() {
 #	fi
 }
 
+
+paru-s-with-log() {
+    paru -S $* 2>&1 | tee ~/Downloads/paru-$1.log
+}
+
 function cp- {
 
 }
